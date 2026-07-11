@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details |Ali Store</title>
+ <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#000000;
+    color:white;
+}
+
+.product-container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.product-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    align-items:center;
+    background:#181818;
+    border-radius:20px;
+    padding:30px;
+}
+
+.product-image{
+    flex:1;
+    min-width:280px;
+    text-align:center;
+}
+
+.product-image img{
+    width:100%;
+    max-width:400px;
+}
+
+.product-info{
+    flex:1;
+    min-width:280px;
+}
+
+.product-info h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#ff8800;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.size-list{
+    margin-bottom:20px;
+}
+
+.size-list li{
+    margin-left:20px;
+    margin-bottom:8px;
+}
+
+.buy-btn{
+    background:#ff8800;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.buy-btn:hover{
+    opacity:.9;
+}
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:transparent;
+    color:#e5e5e5;
+
+    border:1px solid #2d2d2d;
+    border-radius:10px;
+
+    padding:10px 18px;
+    margin-bottom:25px;
+
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.back-btn:hover{
+    background:#171717;
+    border-color:#ff8800;
+    color:#fff;
+}
+
+.back-btn:active{
+    transform:scale(.98);
+} 
+.container{
+    margin:  30px;
+    padding: 20px;
+}
+#cartMessage{
+margin-top:15px;
+color:#ff8c00;
+font-weight:bold;
+}
+
+
+@media (max-width: 768px){
+
+    .container{
+        margin:15px;
+        padding:10px;
+    }
+
+    .product-container{
+        padding:20px 10px;
+    }
+
+    .product-box{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .product-image{
+        min-width:auto;
+    }
+
+    .product-image img{
+        max-width:220px;
+    }
+
+    .product-info{
+        min-width:auto;
+    }
+
+    .product-info h1{
+        font-size:28px;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+    .description{
+        font-size:15px;
+    }
+
+    .size-list{
+        text-align:left;
+        display:inline-block;
+    }
+
+    .buy-btn{
+        width:100%;
+        padding:14px;
+    }
+
+    .back-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+    <button class="back-btn" onclick="history.back()">
+    ← Back
+</button>
+
+<div class="product-container">
+
+    <div class="product-box">
+
+        <div class="product-image">
+            <img id="productImage" src="" alt="">
+        </div>
+
+        <div class="product-info">
+
+            <h1 id="productName"></h1>
+
+            <div class="price" id="productPrice"></div>
+
+            <p class="description" id="productDescription"></p>
+
+            <ul class="size-list">
+                <li>1 Liter</li>
+                <li>3 Liter</li>
+                <li>5 Liter</li>
+            </ul>
+
+            <button class="buy-btn" id="addCartBtn">
+                Add To Cart
+            </button>
+            <div id="cartMessage"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const products = {
+
+canolive5kg:{
+name:"Canolive Cooking Oil 5kg",
+price:"Rs. 3150",
+image:"conalive oil 5 kg .jpg",
+description:"Premium cooking oil with a light texture, ideal for everyday frying and healthy family meals."
+},
+
+dalda5kg:{
+name:"Dalda Cooking Oil 5kg",
+price:"Rs. 3050",
+image:"dalda oil 5kg.jpg",
+description:"Trusted cooking oil for daily use, offering rich taste and excellent frying performance."
+},
+
+eva5kg:{
+name:"Eva Cooking Oil 5kg",
+price:"Rs. 2950",
+image:"evaa 5kg.jpg",
+description:"High-quality cooking oil that delivers freshness and delicious flavor in every meal."
+},
+
+habibsuper5kg:{
+name:"Habib Super Cooking Oil 5kg",
+price:"Rs. 3180",
+image:"habib super .... 5kg .jpg",
+description:"Premium cooking oil designed for deep frying, cooking and everyday kitchen use."
+},
+
+habiboil:{
+name:"Habib Cooking Oil",
+price:"Rs. 680",
+image:"JEeb_G7SS8NGVLnQeRUGuS_WXJqylAD87MC3uacKDeg4loUmYNLjfvCglk2HqBqSCFW9zc0zeQfDnJNv9jpjPejVyajGjeSpmwzP0sMxcCgO0bHhmQaOFUd71HwttSMwfZFWR4hoBsFN8tWt7r4EBkc2QBreBAMvJRe7zfEN0l37IA-dNbQWOlcigZ3O17vG.jpg",
+description:"Quality cooking oil with a balanced taste, suitable for everyday family cooking."
+},
+mezanghee:{
+name:"Mezan Banaspati Ghee",
+price:"Rs. 2890",
+image:"mazan ghee.jpg",
+description:"Rich and flavorful banaspati ghee, perfect for traditional cooking, baking and delicious family meals."
+},
+
+mezanoil5kg:{
+name:"Mezan Cooking Oil 5kg",
+price:"Rs. 3090",
+image:"mazan oil 5kg.jpg",
+description:"Premium cooking oil with a light taste, suitable for frying, roasting and everyday cooking."
+},
+
+shanghee:{
+name:"Shan Banaspati Ghee",
+price:"Rs. 2950",
+image:"shan ghee.png",
+description:"High-quality banaspati ghee that adds rich flavor and aroma to your favorite dishes."
+},
+
+shanoil:{
+name:"Shan Cooking Oil",
+price:"Rs. 690",
+image:"shan-cooking-oil.webp",
+description:"Pure cooking oil for everyday meals with reliable quality and freshness."
+},
+
+shanoil1l:{
+name:"Shan Cooking Oil 1L",
+price:"Rs. 780",
+image:"Shan-Cooking-Oil-1x12-1.jpg",
+description:"Convenient 1-liter cooking oil pack, ideal for daily household use."
+},
+sufipouch:{
+name:"Sufi Cooking Oil Pouch",
+price:"Rs. 320",
+image:"sufii 1 pack.jpg",
+description:"Convenient cooking oil pouch with trusted quality, perfect for everyday kitchen use."
+},
+
+sufighee:{
+name:"Sufi Banaspati Ghee",
+price:"Rs. 2990",
+image:"sufii ghee.jpg",
+description:"Premium banaspati ghee with rich taste, ideal for traditional recipes and family meals."
+},
+
+sufioil:{
+name:"Sufi Cooking Oil",
+price:"Rs. 710",
+image:"sufii oil.png",
+description:"Refined cooking oil that delivers freshness, purity and excellent cooking performance."
+},
+
+suficanola:{
+name:"Sufi Canola Cooking Oil",
+price:"Rs. 950",
+image:"sufioil-canola-standingpouch-box-3047895-simplysufi-removebg-preview.png",
+description:"Healthy canola cooking oil with a light texture, suitable for frying, baking and daily cooking."
+}
+};
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("product");
+
+const product = products[id];
+
+if(product){
+
+document.getElementById("productName").textContent = product.name;
+document.getElementById("productPrice").textContent = product.price;
+document.getElementById("productImage").src = product.image;
+document.getElementById("productDescription").textContent = product.description;
+
+}
+
+const addCartBtn = document.getElementById("addCartBtn");
+
+addCartBtn.addEventListener("click", () => {
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.push(product);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+document.getElementById("cartMessage").innerHTML =
+"✅ Product Added To Cart";
+
+});
+
+
+</script>
+
+</body>
+</html>

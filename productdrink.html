@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+ <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+}
+
+.product-container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.product-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    align-items:center;
+    background:#181818;
+    border-radius:20px;
+    padding:30px;
+}
+
+.product-image{
+    flex:1;
+    min-width:280px;
+    text-align:center;
+}
+
+.product-image img{
+    width:100%;
+    max-width:400px;
+}
+
+.product-info{
+    flex:1;
+    min-width:280px;
+}
+
+.product-info h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#ff8800;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.size-list{
+    margin-bottom:20px;
+}
+
+.size-list li{
+    margin-left:20px;
+    margin-bottom:8px;
+}
+
+.buy-btn{
+    background:#ff8800;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.buy-btn:hover{
+    opacity:.9;
+}
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:transparent;
+    color:#e5e5e5;
+
+    border:1px solid #2d2d2d;
+    border-radius:10px;
+
+    padding:10px 18px;
+    margin-bottom:25px;
+
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.back-btn:hover{
+    background:#171717;
+    border-color:#ff8800;
+    color:#fff;
+}
+
+.back-btn:active{
+    transform:scale(.98);
+} 
+.container{
+    margin:  30px;
+    padding: 20px;
+}
+#cartMessage{
+margin-top:15px;
+color:#ff8c00;
+font-weight:bold;
+}
+
+
+
+/* ============================= */
+
+.related-section{
+
+margin-top:70px;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+color:#fff;
+
+margin-bottom:10px;
+
+}
+
+.section-title p{
+
+color:#bdbdbd;
+
+font-size:17px;
+
+}
+
+.related-products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.related-card{
+
+background:#181818;
+
+border-radius:18px;
+
+padding:20px;
+
+text-align:center;
+
+transition:.35s;
+
+border:1px solid rgba(255,136,0,.12);
+
+}
+
+.related-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 35px rgba(255,136,0,.18);
+
+}
+
+.related-card img{
+
+width:150px;
+
+height:150px;
+
+object-fit:contain;
+
+transition:.35s;
+
+}
+
+.related-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.related-card h3{
+
+margin-top:18px;
+
+font-size:20px;
+
+}
+
+.related-card p{
+
+margin:12px 0;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#ff8800;
+
+}
+
+.related-card a{
+
+display:inline-block;
+
+padding:10px 22px;
+
+background:#28c76f;
+
+color:#fff;
+
+text-decoration:none;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.related-card a:hover{
+
+background:#21b964;
+
+}
+
+
+/*================ WHY CHOOSE US ================*/
+
+.why-section{
+    margin:80px 0;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.why-card{
+    background:#181818;
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    border:1px solid rgba(255,136,0,.12);
+    transition:.35s;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(255,136,0,.18);
+}
+
+.why-icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:12px;
+    color:#fff;
+}
+
+.why-card p{
+    color:#cfcfcf;
+    line-height:1.6;
+}
+
+@media(max-width:768px){
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+.related-products{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.related-card{
+
+padding:15px;
+
+}
+
+.related-card img{
+
+width:120px;
+
+height:120px;
+
+}
+
+.related-card h3{
+
+font-size:18px;
+
+}
+
+.related-card p{
+
+font-size:18px;
+
+}
+
+}
+
+
+@media (max-width: 768px){
+
+    .container{
+        margin:15px;
+        padding:10px;
+    }
+
+    .product-container{
+        padding:20px 10px;
+    }
+
+    .product-box{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .product-image{
+        min-width:auto;
+    }
+
+    .product-image img{
+        max-width:220px;
+    }
+
+    .product-info{
+        min-width:auto;
+    }
+
+    .product-info h1{
+        font-size:28px;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+    .description{
+        font-size:15px;
+    }
+
+    .size-list{
+        text-align:left;
+        display:inline-block;
+    }
+
+    .buy-btn{
+        width:100%;
+        padding:14px;
+    }
+
+    .back-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+    <button class="back-btn" onclick="history.back()">
+    ← Back
+</button>
+
+<div class="product-container">
+
+    <div class="product-box">
+
+        <div class="product-image">
+            <img id="productImage" src="" alt="">
+        </div>
+
+        <div class="product-info">
+
+            <h1 id="productName"></h1>
+
+            <div class="price" id="productPrice"></div>
+
+            <p class="description" id="productDescription"></p>
+
+           <ul class="size-list">
+    <li>250ml Can — Rs. 110</li>
+    <li>500ml Bottle — Rs. 120</li>
+    <li>1 Liter Bottle — Rs. 220</li>
+    <li>1.5 Liter Bottle — Rs. 320</li>
+    <li>2.25 Liter Bottle — Rs. 430</li>
+    <li>12 Pack — Rs. 1320</li>
+</ul>
+
+            <button class="buy-btn" id="addCartBtn">
+                Add To Cart
+            </button>
+            <div id="cartMessage"></div>
+
+        </div>
+
+    </div>
+
+</div>
+        <section class="related-section">
+
+    <div class="section-title">
+        <h2>You May Also Like</h2>
+        <p>Explore more refreshing drinks</p>
+    </div>
+
+    <div class="related-products" id="relatedProducts">
+
+    </div>
+
+</section>
+
+    <section class="why-section">
+
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>We make your shopping simple and reliable.</p>
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+            <div class="why-icon">🚚</div>
+            <h3>Fast Payment</h3>
+            <p>Quick and reliable Cash .</p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">🥤</div>
+            <h3>Fresh Products</h3>
+            <p>Quality beverages with trusted brands.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">💳</div>
+            <h3>Secure Payment</h3>
+            <p>Safe and secure checkout experience.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">⭐</div>
+            <h3>Customer Satisfaction</h3>
+            <p>Your satisfaction is always our priority.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const products = {
+
+   
+
+fanta2l:{
+name:"Fanta 2L",
+price:"Rs. 420",
+image:"fanta-soft-drink_2ml-removebg-preview.png",
+description:"Refreshing orange flavored soft drink perfect for every occasion."
+},
+
+pepsi225:{
+name:"Pepsi 2.25L",
+price:"Rs. 430",
+image:"pepsi_2.25-removebg-preview.png",
+description:"Enjoy the bold and refreshing taste of Pepsi with family."
+},
+
+pepsi500:{
+name:"Pepsi 500ml",
+price:"Rs. 120",
+image:"Pepsi-500Ml-1-removebg-preview.png",
+description:"Perfect size for everyday refreshment."
+},
+
+coke500:{
+name:"Coca-Cola 500ml",
+price:"Rs. 120",
+image:"1549191625-removebg-preview.png",
+description:"Classic Coca-Cola taste loved by everyone."
+},
+
+coke1l:{
+name:"Coca-Cola 1L",
+price:"Rs.220",
+image:"coca-cola-bottle-1-ltr-975111-removebg-preview.png",
+description:"Perfect bottle for sharing."
+},
+
+cokecan:{
+name:"Coca-Cola Can",
+price:"Rs.110",
+image:"54491472-removebg-preview.png",
+description:"Ice cold classic Coca-Cola can."
+},
+
+cokepack:{
+name:"Coca-Cola 12 Pack",
+price:"Rs.1320",
+image:"pak_of_cocola_12pack-removebg-preview.png",
+description:"Family value pack of Coca-Cola cans."
+},
+
+spritecan:{
+name:"Sprite Can",
+price:"Rs.110",
+image:"sprite_can_250ml-removebg-preview.png",
+description:"Lemon-lime refreshment with crisp taste."
+},
+
+pepsican:{
+name:"Pepsi Can",
+price:"Rs.110",
+image:"papiss_-removebg-preview.png",
+description:"Chilled Pepsi can for instant refreshment."
+},
+
+spritepack:{
+name:"Sprite 12 Pack",
+price:"Rs.1320",
+image:"pak_of_sprite_12-removebg-preview (1).png",
+description:"Value pack of Sprite cans."
+},
+
+fanta15:{
+name:"Fanta 1.5L",
+price:"Rs.320",
+image:"fanta_1.5-removebg-preview.png",
+description:"Orange flavored soft drink for family gatherings."
+},
+
+fantacan:{
+name:"Fanta Can",
+price:"Rs.110",
+image:"fanta_soda_orangecan-removebg-preview.png",
+description:"Refreshing Fanta in a handy can."
+}
+
+};
+
+
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("drink");
+
+const product = products[id];
+
+if(product){
+
+document.getElementById("productName").textContent = product.name;
+document.getElementById("productPrice").textContent = product.price;
+document.getElementById("productImage").src = product.image;
+document.getElementById("productDescription").textContent = product.description;
+
+}
+
+
+/* ===========================================
+   Related Products (Random)
+=========================================== */
+
+function loadRelatedProducts(){
+
+const container = document.getElementById("relatedProducts");
+
+if(!container) return;
+
+const current = params.get("drink");
+
+const ids = Object.keys(products).filter(id => id !== current);
+
+// Random Shuffle
+ids.sort(() => Math.random() - 0.5);
+
+// Sirf 4 Products
+const selected = ids.slice(0,4);
+
+container.innerHTML = "";
+
+selected.forEach(id=>{
+
+const item = products[id];
+
+container.innerHTML += `
+
+<div class="related-card">
+
+<img src="${item.image}" alt="${item.name}">
+
+<h3>${item.name}</h3>
+
+<p>${item.price}</p>
+
+<a href="productdrink.html?drink=${id}">
+View Details
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+const addCartBtn = document.getElementById("addCartBtn");
+
+addCartBtn.addEventListener("click", () => {
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.push(product);
+
+localStorage.setItem("cart", JSON.stringify(cart));
+
+document.getElementById("cartMessage").innerHTML =
+"✅ Product Added To Cart";
+
+});
+
+loadRelatedProducts();
+
+</script>
+
+</body>
+</html>

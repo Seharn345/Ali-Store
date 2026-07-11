@@ -1,0 +1,758 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+}
+
+.product-container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.product-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    align-items:center;
+    background:#181818;
+    border-radius:20px;
+    padding:30px;
+}
+
+.product-image{
+    flex:1;
+    min-width:280px;
+    text-align:center;
+}
+
+.product-image img{
+    width:100%;
+    max-width:400px;
+}
+
+.product-info{
+    flex:1;
+    min-width:280px;
+}
+
+.product-info h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#ff8800;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.size-list{
+    margin-bottom:20px;
+}
+
+.size-list li{
+    margin-left:20px;
+    margin-bottom:8px;
+}
+
+.buy-btn{
+    background:#ff8800;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.buy-btn:hover{
+    opacity:.9;
+}
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:transparent;
+    color:#e5e5e5;
+
+    border:1px solid #2d2d2d;
+    border-radius:10px;
+
+    padding:10px 18px;
+    margin-bottom:25px;
+
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.back-btn:hover{
+    background:#171717;
+    border-color:#ff8800;
+    color:#fff;
+}
+
+.back-btn:active{
+    transform:scale(.98);
+} 
+.container{
+    margin:  30px;
+    padding: 20px;
+}
+#cartMessage{
+margin-top:15px;
+color:#ff8c00;
+font-weight:bold;
+}
+
+
+
+
+
+.related-section{
+
+margin-top:70px;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+color:#fff;
+
+margin-bottom:10px;
+
+}
+
+.section-title p{
+
+color:#bdbdbd;
+
+font-size:17px;
+
+}
+
+.related-products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.related-card{
+
+background:#181818;
+
+border-radius:18px;
+
+padding:20px;
+
+text-align:center;
+
+transition:.35s;
+
+border:1px solid rgba(255,136,0,.12);
+
+}
+
+.related-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 35px rgba(255,136,0,.18);
+
+}
+
+.related-card img{
+
+width:150px;
+
+height:150px;
+
+object-fit:contain;
+
+transition:.35s;
+
+}
+
+.related-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.related-card h3{
+
+margin-top:18px;
+
+font-size:20px;
+
+}
+
+.related-card p{
+
+margin:12px 0;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#ff8800;
+
+}
+
+.related-card a{
+
+display:inline-block;
+
+padding:10px 22px;
+
+background:#28c76f;
+
+color:#fff;
+
+text-decoration:none;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.related-card a:hover{
+
+background:#21b964;
+
+}
+
+
+/*================ WHY CHOOSE US ================*/
+
+.why-section{
+    margin:80px 0;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.why-card{
+    background:#181818;
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    border:1px solid rgba(255,136,0,.12);
+    transition:.35s;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(255,136,0,.18);
+}
+
+.why-icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:12px;
+    color:#fff;
+}
+
+.why-card p{
+    color:#cfcfcf;
+    line-height:1.6;
+}
+
+@media(max-width:768px){
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+.related-products{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.related-card{
+
+padding:15px;
+
+}
+
+.related-card img{
+
+width:120px;
+
+height:120px;
+
+}
+
+.related-card h3{
+
+font-size:18px;
+
+}
+
+.related-card p{
+
+font-size:18px;
+
+}
+
+}
+
+
+@media (max-width: 768px){
+
+    .container{
+        margin:15px;
+        padding:10px;
+    }
+
+    .product-container{
+        padding:20px 10px;
+    }
+
+    .product-box{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .product-image{
+        min-width:auto;
+    }
+
+    .product-image img{
+        max-width:220px;
+    }
+
+    .product-info{
+        min-width:auto;
+    }
+
+    .product-info h1{
+        font-size:28px;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+    .description{
+        font-size:15px;
+    }
+
+    .size-list{
+        text-align:left;
+        display:inline-block;
+    }
+
+    .buy-btn{
+        width:100%;
+        padding:14px;
+    }
+
+    .back-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+
+
+</style>
+</head>
+<body>
+    <div class="container">
+    <button class="back-btn" onclick="history.back()">
+    ← Back
+</button>
+
+<div class="product-container">
+
+    <div class="product-box">
+
+        <div class="product-image">
+            <img id="productImage" src="" alt="">
+        </div>
+
+        <div class="product-info">
+
+            <h1 id="productName"></h1>
+
+            <div class="price" id="productPrice"></div>
+
+            <p class="description" id="productDescription"></p>
+
+           <!-- <ul class="size-list">
+<li>Milk — 250ml / 500ml / 1L</li>
+<li>Tea — 85g / 450g / 900g / 1KG</li>
+<li>Yogurt • Cream • Butter • Cheese</li>
+<li>Fresh Eggs & Milk Powder</li>
+<li>Original & Trusted Brands</li>
+<li>Fast Delivery Available</li>
+</ul> -->
+<ul class="size-list">
+<li>Milk — 250ml / 500ml / 1L</li>
+<li>Tea — 85g / 450g / 900g / 1KG</li>
+<li>Yogurt • Cream • Butter • Cheese</li>
+<li>Fresh Eggs & Milk Powder</li>
+<li>Original & Trusted Brands</li>
+<li>Fast Delivery Available</li>
+</ul>
+
+            <button class="buy-btn" id="addCartBtn">
+                Add To Cart
+            </button>
+            <div id="cartMessage"></div>
+
+        </div>
+
+    </div>
+
+</div>
+        <section class="related-section">
+
+    <div class="section-title">
+        <h2>You May Also Like</h2>
+<!-- <p>Explore more personal care products.</p> -->
+ <p>Explore fresh dairy, milk, tea and everyday essentials.</p>
+    </div>
+
+    <div class="related-products" id="relatedProducts">
+
+    </div>
+
+</section>
+
+    <section class="why-section">
+
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>We make your shopping simple and reliable.</p>
+         <!-- <p>Explore fresh dairy, milk, tea and everyday essentials.</p> -->
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+            <div class="why-icon">🚚</div>
+<h3>Fresh Payment</h3>
+<p>Fresh milk, tea, yogurt and dairy products from trusted brands.</p>
+        </div>
+
+       <div class="why-card">
+<div class="why-icon">🥛</div>
+<h3>Fresh Dairy</h3>
+<p>Fresh milk, tea, yogurt and dairy products from trusted brands.</p>
+</div>
+        <div class="why-card">
+            <div class="why-icon">💳</div>
+            <h3>Secure Payment</h3>
+            <p>Safe and secure checkout experience.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">⭐</div>
+            <h3>Customer Satisfaction</h3>
+            <p>Your satisfaction is always our priority.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    const products = {
+
+    
+    olpersmilk:{
+name:"Olper's Milk 1L",
+price:"Rs. 410",
+image:"images__10_-removebg-preview.png",
+description:"Fresh and nutritious UHT milk, perfect for daily tea, coffee and family use."
+},
+
+nestlemilk:{
+name:"Nestlé Milk 1L",
+price:"Rs. 420",
+image:"Nestle20Milk20-removebg-preview.png",
+description:"Premium quality milk with rich taste and essential nutrients."
+},
+
+milkpak:{
+name:"MilkPak Milk 1L",
+price:"Rs. 405",
+image:"images__8_-removebg-preview (1).png",
+description:"Pure and wholesome milk for drinking, tea and cooking."
+},
+
+nestleyogurt:{
+name:"Nestlé Yogurt",
+price:"Rs. 285",
+image:"Yoghurt-NEW-removebg-preview.png",
+description:"Smooth and creamy yogurt made from fresh milk for everyday meals."
+},
+
+dairycream:{
+name:"Fresh Dairy Cream",
+price:"Rs. 330",
+image:"rich_creamy_dairy_-removebg-preview.png",
+description:"Rich and creamy dairy cream for desserts, cooking and baking."
+},
+
+cheddarcheese:{
+name:"Cheddar Cheese",
+price:"Rs. 650",
+image:"images__13_-removebg-preview.png",
+description:"Delicious cheddar cheese with a rich flavor, ideal for sandwiches and snacks."
+},
+haleebcream:{
+name:"Haleeb Milk Cream",
+price:"Rs. 185",
+image:"haleeb-cremyum-fresh-milk-cream-200-ml-125902-removebg-preview.png",
+description:"Rich and smooth milk cream, perfect for desserts, tea and cooking."
+},
+
+omungcream:{
+name:"Omung Double Cream",
+price:"Rs. 220",
+image:"buy_omung_dobala_cream_200ML_-removebg-preview.png",
+description:"Double cream with a creamy texture for delicious recipes."
+},
+
+premayogurt:{
+name:"Prema Yogurt",
+price:"Rs. 250",
+image:"prema_yogurt-removebg-preview.png",
+description:"Fresh yogurt made from quality milk with a smooth taste."
+},
+
+nidofortigrow:{
+name:"Nido FortiGrow 900g",
+price:"Rs. 2950",
+image:"Nido_Fortigrow_School_Age_Nutrition_900g_1000x-removebg-preview.png",
+description:"Nutritious milk powder specially formulated for growing children."
+},
+
+milkpowder:{
+name:"Milk Powder",
+price:"Rs. 870",
+image:"images__14_-removebg-preview.png",
+description:"Premium milk powder suitable for tea, coffee and everyday use."
+},
+
+everydaymilkpowder:{
+name:"Nestlé Everyday Milk Powder",
+price:"Rs. 540",
+image:"Nestle-Everday-Milk-Powder-230gms-removebg-preview.png",
+description:"Creamy milk powder that gives your tea and coffee a rich taste."
+},
+
+everydaymilk:{
+name:"Everyday Milk",
+price:"Rs. 280",
+image:"everyday_milk-removebg-preview.png",
+description:"Creamy everyday milk for tea, coffee and delicious recipes."
+},
+
+tapal1kg:{
+name:"Tapal Danedar Tea 1KG",
+price:"Rs. 1990",
+image:"tapal_1kg-removebg-preview.png",
+description:"Premium quality tea with a rich aroma and refreshing taste."
+},
+
+tapalgreen:{
+name:"Tapal Green Tea",
+price:"Rs. 650",
+image:"tapal_green_tea_-removebg-preview.png",
+description:"Refreshing green tea for a light and healthy lifestyle."
+},
+
+tapal85g:{
+name:"Tapal Family Mixture Tea",
+price:"Rs. 330",
+image:"tapal_tea_85g-removebg-preview.png",
+description:"Classic Pakistani tea with a strong and refreshing flavor."
+},
+
+egg6:{
+name:"Farm Eggs (6 Pack)",
+price:"Rs. 230",
+image:"egg_6-removebg-preview.png",
+description:"Fresh farm eggs packed with natural protein for everyday meals."
+},
+
+egg12:{
+name:"Farm Eggs (12 Pack)",
+price:"Rs. 460",
+image:"egg_12-removebg-preview.png",
+description:"One dozen fresh eggs, ideal for families and daily nutrition."
+}
+   
+
+
+
+}
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("product");
+const product = products[id];
+
+if(product){
+
+document.getElementById("productName").textContent = product.name;
+document.getElementById("productPrice").textContent = product.price;
+document.getElementById("productDescription").textContent = product.description;
+document.getElementById("productImage").src = product.image;
+document.getElementById("productImage").alt = product.name;
+
+};
+
+/* ===========================================
+   Related Products (Random)
+=========================================== */
+
+
+/* ===========================================
+   Related Products (Random)
+=========================================== */
+
+function loadRelatedProducts(){
+
+const container = document.getElementById("relatedProducts");
+
+if(!container) return;
+
+const current = params.get("product");
+
+const ids = Object.keys(products).filter(id => id !== current);
+
+ids.sort(() => Math.random() - 0.5);
+
+const selected = ids.slice(0,4);
+
+container.innerHTML = "";
+
+selected.forEach(id=>{
+
+const item = products[id];
+
+container.innerHTML += `
+
+<div class="related-card">
+
+<img src="${item.image}" alt="${item.name}">
+
+<h3>${item.name}</h3>
+
+<p>${item.price}</p>
+
+<a href="productdairy.html?product=${id}">
+View Details
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* ==========================
+   Add To Cart
+========================== */
+
+const addCartBtn = document.getElementById("addCartBtn");
+
+addCartBtn.addEventListener("click",()=>{
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.push({
+
+id:id,
+name:product.name,
+price:product.price,
+image:product.image
+
+});
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+document.getElementById("cartMessage").innerHTML =
+"✅ Product Added To Cart";
+
+});
+
+loadRelatedProducts();
+
+
+</script>
+
+</body>
+</html>

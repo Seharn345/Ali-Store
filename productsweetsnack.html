@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+ <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+}
+
+.product-container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.product-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    align-items:center;
+    background:#181818;
+    border-radius:20px;
+    padding:30px;
+}
+
+.product-image{
+    flex:1;
+    min-width:280px;
+    text-align:center;
+}
+
+.product-image img{
+    width:100%;
+    max-width:400px;
+}
+
+.product-info{
+    flex:1;
+    min-width:280px;
+}
+
+.product-info h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#ff8800;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.description{
+    color:#ddd;
+    line-height:1.7;
+    margin-bottom:20px;
+}
+
+.size-list{
+    margin-bottom:20px;
+}
+
+.size-list li{
+    margin-left:20px;
+    margin-bottom:8px;
+}
+
+.buy-btn{
+    background:#ff8800;
+    color:white;
+    border:none;
+    padding:14px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.buy-btn:hover{
+    opacity:.9;
+}
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:transparent;
+    color:#e5e5e5;
+
+    border:1px solid #2d2d2d;
+    border-radius:10px;
+
+    padding:10px 18px;
+    margin-bottom:25px;
+
+    font-size:15px;
+    font-weight:500;
+    cursor:pointer;
+
+    transition:.25s ease;
+}
+
+.back-btn:hover{
+    background:#171717;
+    border-color:#ff8800;
+    color:#fff;
+}
+
+.back-btn:active{
+    transform:scale(.98);
+} 
+.container{
+    margin:  30px;
+    padding: 20px;
+}
+#cartMessage{
+margin-top:15px;
+color:#ff8c00;
+font-weight:bold;
+}
+
+
+
+
+
+.related-section{
+
+margin-top:70px;
+
+}
+
+.section-title{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.section-title h2{
+
+font-size:34px;
+
+color:#fff;
+
+margin-bottom:10px;
+
+}
+
+.section-title p{
+
+color:#bdbdbd;
+
+font-size:17px;
+
+}
+
+.related-products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+}
+
+.related-card{
+
+background:#181818;
+
+border-radius:18px;
+
+padding:20px;
+
+text-align:center;
+
+transition:.35s;
+
+border:1px solid rgba(255,136,0,.12);
+
+}
+
+.related-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 15px 35px rgba(255,136,0,.18);
+
+}
+
+.related-card img{
+
+width:150px;
+
+height:150px;
+
+object-fit:contain;
+
+transition:.35s;
+
+}
+
+.related-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.related-card h3{
+
+margin-top:18px;
+
+font-size:20px;
+
+}
+
+.related-card p{
+
+margin:12px 0;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#ff8800;
+
+}
+
+.related-card a{
+
+display:inline-block;
+
+padding:10px 22px;
+
+background:#28c76f;
+
+color:#fff;
+
+text-decoration:none;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.related-card a:hover{
+
+background:#21b964;
+
+}
+
+
+/*================ WHY CHOOSE US ================*/
+
+.why-section{
+    margin:80px 0;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.why-card{
+    background:#181818;
+    border-radius:18px;
+    padding:30px 20px;
+    text-align:center;
+    border:1px solid rgba(255,136,0,.12);
+    transition:.35s;
+}
+
+.why-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(255,136,0,.18);
+}
+
+.why-icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.why-card h3{
+    margin-bottom:12px;
+    color:#fff;
+}
+
+.why-card p{
+    color:#cfcfcf;
+    line-height:1.6;
+}
+
+@media(max-width:768px){
+
+    .why-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+.related-products{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.related-card{
+
+padding:15px;
+
+}
+
+.related-card img{
+
+width:120px;
+
+height:120px;
+
+}
+
+.related-card h3{
+
+font-size:18px;
+
+}
+
+.related-card p{
+
+font-size:18px;
+
+}
+
+}
+
+
+@media (max-width: 768px){
+
+    .container{
+        margin:15px;
+        padding:10px;
+    }
+
+    .product-container{
+        padding:20px 10px;
+    }
+
+    .product-box{
+        flex-direction:column;
+        gap:20px;
+        padding:20px;
+        text-align:center;
+    }
+
+    .product-image{
+        min-width:auto;
+    }
+
+    .product-image img{
+        max-width:220px;
+    }
+
+    .product-info{
+        min-width:auto;
+    }
+
+    .product-info h1{
+        font-size:28px;
+    }
+
+    .price{
+        font-size:24px;
+    }
+
+    .description{
+        font-size:15px;
+    }
+
+    .size-list{
+        text-align:left;
+        display:inline-block;
+    }
+
+    .buy-btn{
+        width:100%;
+        padding:14px;
+    }
+
+    .back-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+    <button class="back-btn" onclick="history.back()">
+    ← Back
+</button>
+
+<div class="product-container">
+
+    <div class="product-box">
+
+        <div class="product-image">
+            <img id="productImage" src="" alt="">
+        </div>
+
+        <div class="product-info">
+
+            <h1 id="productName"></h1>
+
+            <div class="price" id="productPrice"></div>
+
+            <p class="description" id="productDescription"></p>
+
+<ul class="size-list">
+     <li>Chocolate Bars — KitKat • Mars • Snickers • Twix</li> 
+     <li>Cookies & Biscuits — LU • Peek Freans • Bisconni</li>
+      <li>Cakes • Wafers • Cream Biscuits</li> <li>Perfect for Parties, Tea Time & Daily Treats</li> 
+      <li>Original & Trusted Brands</li>
+       <li>Fast Delivery Available</li> 
+    </ul>
+
+            <button class="buy-btn" id="addCartBtn">
+                Add To Cart
+            </button>
+            <div id="cartMessage"></div>
+
+        </div>
+
+    </div>
+
+</div>
+        <section class="related-section">
+
+    <div class="section-title">
+        <h2>You May Also Like</h2>
+ <p>Discover more chocolates, biscuits, cookies and sweet favorites.</p>
+
+    </div>
+
+    <div class="related-products" id="relatedProducts">
+
+    </div>
+
+</section>
+
+    <section class="why-section">
+
+    <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>We make your shopping simple and reliable.</p>
+         
+    </div>
+
+    <div class="why-grid">
+
+<div class="why-card">
+    <div class="why-icon">🚚</div>
+    <h3>Fast Payment</h3>
+    <p>Get your favorite chocolates, biscuits and sweet treats delivered quickly and safely.</p>
+</div>
+
+ <div class="why-card"> <div class="why-icon">🍫</div>
+  <h3>Premium Sweet Treats</h3> 
+  <p>Enjoy delicious chocolates, biscuits, cookies and cakes from trusted brands.</p> </div>
+
+        <div class="why-card">
+            <div class="why-icon">💳</div>
+            <h3>Secure Payment</h3>
+            <p>Safe and secure checkout experience.</p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">⭐</div>
+            <h3>Customer Satisfaction</h3>
+            <p>Your satisfaction is always our priority.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+
+const products = {
+
+kitkat:{
+name:"KitKat Chocolate Bar",
+price:"Rs. 120",
+image:"kitkat 1 .jpeg",
+description:"Crispy wafer fingers covered with smooth milk chocolate. A perfect sweet treat for any time of the day."
+},
+
+mms:{
+name:"M&M's Chocolate",
+price:"Rs. 250",
+image:"mms .jpeg",
+description:"Colorful candy-coated milk chocolate bites loved by kids and adults alike."
+},
+
+twix:{
+name:"Twix Chocolate Bar",
+price:"Rs. 180",
+image:"twix 1 ).jpg",
+description:"Crunchy biscuit topped with caramel and coated in delicious milk chocolate."
+},
+
+bounty:{
+name:"Bounty Chocolate",
+price:"Rs. 180",
+image:"bounty 11 pack.webp",
+description:"Soft coconut filling wrapped in rich milk chocolate for a tropical sweet taste."
+},
+
+mars:{
+name:"Mars Chocolate Bar",
+price:"Rs. 180",
+image:"mars 1 .jpg",
+description:"A delicious combination of nougat, caramel and milk chocolate in every bite."
+},
+
+snickers:{
+name:"Snickers Chocolate",
+price:"Rs. 180",
+image:"snickers .jpg",
+description:"Roasted peanuts, caramel and nougat covered with creamy milk chocolate."
+},
+
+galaxy:{
+name:"Galaxy Chocolate",
+price:"Rs. 220",
+image:"1Galaxy_-_Chocolate_Bar_webp.webp",
+description:"Smooth and creamy milk chocolate with a rich melt-in-your-mouth taste."
+},
+
+jubilee:{
+name:"Jubilee Chocolate",
+price:"Rs. 100",
+image:"jubilee.png",
+description:"Classic chocolate bar with a rich cocoa flavor, perfect for everyday enjoyment."
+},
+
+abcpartypack:{
+name:"ABC Party Pack 42g",
+price:"Rs. 60",
+image:"party pack abc 42g.png",
+description:"A colorful party pack filled with delicious sweet treats for sharing."
+},
+
+dairymilk:{
+name:"Cadbury Dairy Milk",
+price:"Rs. 100",
+image:"dairy mile 100 walii.jpg",
+description:"Rich and creamy Cadbury Dairy Milk chocolate made with smooth milk chocolate."
+},
+
+traditionwafer:{
+name:"Tradition Chocolate Wafer",
+price:"Rs. 80",
+image:"tradition teste jaaaliisss).jpg",
+description:"Light crispy wafers layered with delicious chocolate cream."
+},
+
+jiggles:{
+name:"Jiggles Candy",
+price:"Rs. 50",
+image:"jiggales.jpg",
+description:"Fun fruity chewy candy with a sweet and enjoyable taste."
+},
+
+cocomo:{
+name:"Bisconni Cocomo",
+price:"Rs. 50",
+image:"bisconni-cocomo-.webp",
+description:"Crunchy chocolate-filled biscuits with a rich cocoa flavor, perfect for tea time."
+},
+
+chotato:{
+name:"Chotato Chocolate Biscuit",
+price:"Rs. 40",
+image:"chotatoo .jpg",
+description:"Delicious chocolate biscuits with a crispy texture and sweet chocolate taste."
+},
+
+lubutter:{
+name:"LU Butter Biscuits",
+price:"Rs. 70",
+image:"butter LU.jpg",
+description:"Classic buttery biscuits with a rich flavor, perfect for tea and everyday snacking."
+},
+
+buttercookies:{
+name:"Butter Cookies",
+price:"Rs. 180",
+image:"cookies ban.jpg",
+description:"Premium butter cookies baked to perfection with a soft, buttery taste."
+},
+
+lucandi:{
+name:"LU Candi Biscuits",
+price:"Rs. 60",
+image:"candii LUjpg.jpg",
+description:"Sweet crunchy biscuits from LU, loved by all ages for their classic taste."
+},
+
+lugala:{
+name:"LU Gala Biscuits",
+price:"Rs. 80",
+image:"Gala LU.jpg",
+description:"Crunchy sandwich biscuits with a delicious chocolate cream filling."
+},
+
+clusoteddycake:{
+name:"Cluso Teddy Cake",
+price:"Rs. 60",
+image:"cluso teddy cake.jpg",
+description:"Soft and fluffy teddy cake with a delicious chocolate filling, perfect for kids and tea time."
+},
+
+peekfreans:{
+name:"Peek Freans Biscuits",
+price:"Rs. 80",
+image:"peek-freans.jpg",
+description:"Classic crispy biscuits from Peek Freans, loved for their rich taste and quality."
+},
+
+buttercookiespremium:{
+name:"Butter Cookies Premium",
+price:"Rs. 250",
+image:"8964003590635.webp",
+description:"Premium butter cookies with a rich buttery flavor and melt-in-your-mouth texture."
+},
+
+click:{
+name:"Click Chocolate Bar",
+price:"Rs. 70",
+image:"click .jpg",
+description:"Crunchy wafer layers coated with smooth milk chocolate for a delightful snack."
+},
+
+smiledonutcake:{
+name:"Smile Chocolate Donut Cake",
+price:"Rs. 80",
+image:"smile choacoate dount cake.jpeg",
+description:"Soft donut-style chocolate cake with a delicious cocoa flavor, perfect for dessert lovers."
+},
+
+smilecake:{
+name:"Smile Cake",
+price:"Rs. 60",
+image:"smile cake.jpg",
+description:"Soft sponge cake with a sweet creamy flavor, perfect for tea time and everyday enjoyment."
+},
+
+peekfreanschocolate:{
+name:"Peek Freans Chocolate Biscuits",
+price:"Rs. 90",
+image:"peekkkkk).webp",
+description:"Crunchy chocolate biscuits filled with rich cocoa flavor for a delicious snack."
+},
+
+chocolatecookies:{
+name:"Chocolate Cookies",
+price:"Rs. 100",
+image:"shochlate.webp",
+description:"Freshly baked chocolate cookies with a rich cocoa taste and crispy texture."
+},
+
+chocolatewafer:{
+name:"Chocolate Wafer",
+price:"Rs. 80",
+image:"ccfa.webp",
+description:"Light crispy wafers layered with smooth chocolate cream for a delightful treat."
+},
+
+peekfreanssandwich:{
+name:"Peek Freans Sandwich Biscuits",
+price:"Rs. 70",
+image:"peek 2.jpg",
+description:"Crunchy sandwich biscuits with a smooth sweet cream filling."
+},
+
+peekfreanscream:{
+name:"Peek Freans Cream Biscuits",
+price:"Rs. 70",
+image:"peek .jpg",
+description:"Classic cream biscuits with a crispy texture and delicious creamy filling."
+},
+
+doublechocolicious:{
+name:"Peek Freans Double Chocolicious",
+price:"Rs. 120",
+image:"Peek_20Freans_20Double_20Chocolicious_webp.webp",
+description:"Double chocolate sandwich biscuits with rich chocolate cream for an extra chocolaty experience."
+}
+
+};
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("product");
+const product = products[id];
+
+if(product){
+
+document.getElementById("productName").textContent = product.name;
+document.getElementById("productPrice").textContent = product.price;
+document.getElementById("productDescription").textContent = product.description;
+document.getElementById("productImage").src = product.image;
+document.getElementById("productImage").alt = product.name;
+
+};
+
+/* ===========================================
+   Related Products (Random)
+=========================================== */
+
+
+/* ===========================================
+   Related Products (Random)
+=========================================== */
+
+function loadRelatedProducts(){
+
+const container = document.getElementById("relatedProducts");
+
+if(!container) return;
+
+const current = params.get("product");
+
+// const ids = Object.keys(products).filter(id => id !== current);
+const ids = Object.keys(products.surf).filter(id => id !== current);
+
+
+ids.sort(() => Math.random() - 0.5);
+
+const selected = ids.slice(0,4);
+
+container.innerHTML = "";
+
+selected.forEach(id=>{
+
+const item = products[id];
+
+container.innerHTML += `
+
+<div class="related-card">
+
+<img src="${item.image}" alt="${item.name}">
+
+<h3>${item.name}</h3>
+
+<p>${item.price}</p>
+
+<a href="productsweetsnack.html?product=${id}">
+View Details
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* ==========================
+   Add To Cart
+========================== */
+
+const addCartBtn = document.getElementById("addCartBtn");
+
+addCartBtn.addEventListener("click",()=>{
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.push({
+
+id:id,
+name:product.name,
+price:product.price,
+image:product.image
+
+});
+
+localStorage.setItem("cart",JSON.stringify(cart));
+
+document.getElementById("cartMessage").innerHTML =
+"✅ Product Added To Cart";
+
+});
+
+loadRelatedProducts();
+
+
+</script>
+
+</body>
+</html>
