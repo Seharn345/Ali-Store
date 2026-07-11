@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Products</title>
+ <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+        .product-page {
+    width: 100%;
+    background: #fcfcfc;
+    padding: 40px 30px 80px;
+    box-sizing: border-box;
+      overflow:hidden;
+    /* font-family: Arial, sans-serif; */
+}
+.product-page::before{
+    content:"";
+    position:absolute;
+    /* position: relative; */
+    overflow: hidden;
+    width:250px;
+    height:250px;
+    background:rgba(255,136,0,0.12);
+    filter:blur(90px);
+    border-radius:50%;
+    top:120px;
+    left:40px;
+}
+
+/* Half Image Banner */
+.product-banner {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 25px;
+    margin-bottom: 60px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(255, 136, 0, 0.18);
+}
+
+.product-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.product-banner:hover img {
+    transform: scale(1.08);
+}
+.banner-text h1{
+    text-shadow:
+    0 0 20px rgba(255,136,0,.2),
+    0 0 40px rgba(255,136,0,.12);
+}
+
+/* Dark overlay */
+.product-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.75),
+        rgba(255, 136, 0, 0.12)
+    );
+}
+
+/* Products Grid */
+.products {
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 35px;
+    margin-top:-80px;
+    position:relative;
+    z-index:5;
+      margin-top:0px;
+
+       
+}
+
+.banner-text{
+    position:absolute;
+    top:50%;
+    left:70px;
+    transform:translateY(-50%);
+    z-index:2;
+}
+
+.banner-text h1{
+    color:white;
+    font-size:64px;
+margin-bottom:15px;
+
+}
+
+.banner-text p{
+    color:#ddd;
+    font-size:22px;
+}
+
+.hero-up{
+    padding:40px 20px;
+}
+
+.products{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+
+}
+
+.product-card{
+    width:260px;
+    /* background:#fff; */
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    
+}
+
+.product-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 40px rgba(255,77,0,.25);
+}
+
+.product-card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#fff3ec;
+    border-radius:50%;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.product-card img{
+    width:170px;
+    height:170px;
+    object-fit:contain;
+    position:relative;
+    z-index:2;
+    transition:.4s;
+}
+
+.product-card:hover img{
+    transform:scale(1.08);
+}
+
+.wishlist-btn{
+    position:absolute;
+    top:15px;
+    right:15px;
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+    z-index:3;
+}
+
+.product-card h3{
+    margin-top:15px;
+}
+
+.product-card h3 a{
+    text-decoration:none;
+    color:#222;
+    font-size:22px;
+}
+
+.product-card p{
+    color:#ff4d00;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+
+
+
+.view-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 24px;
+    background:#fe8904;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.view-btn:hover{
+    background:#ff9e01;
+    transform:translateY(-3px);
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .hero-up{
+        padding:20px 10px;
+    }
+
+    .product-card{
+        width:100%;
+        max-width:320px;
+    }
+
+    .product-card img{
+        width:140px;
+        height:140px;
+    }
+
+    .product-card h3 a{
+        font-size:20px;
+    }
+
+    .product-card p{
+        font-size:22px;
+    }
+}
+@media (min-width:768px){
+
+    .products{
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+}
+.product-card{
+    opacity:0;
+    transform:translateY(40px);
+    animation:show .7s forwards;
+}
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+    </style>
+</head>
+<body>
+    
+       <section class="product-page">
+
+    <!-- Hero Banner -->
+    <div class="product-banner">
+        <img src="surf-excel-1.png" alt="Banner">
+
+        <div class="banner-text">
+            <h1>Cleaning Powder</h1>
+        <p>Cleaning • Detergent Powder • Fast Payment</p>
+        </div>
+    </div>
+       </section>
+          <section class="hero-up">
+            <div class="products">
+<section class="hero-up">
+<div class="products">
+
+
+<!-- 1 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="express 1 kg.avif" alt="Express Detergent Powder 1kg">
+
+<h3>
+<a href="productsurf.html?product=express1kg">
+Express Detergent Powder 1kg
+</a>
+</h3>
+
+<p>Rs. 490</p>
+
+<a href="productsurf.html?product=express1kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sunlight rs 99.jpeg" alt="Sunlight Detergent">
+
+<h3>
+<a href="productsurf.html?product=sunlight">
+Sunlight Detergent
+</a>
+</h3>
+
+<p>Rs. 99</p>
+
+<a href="productsurf.html?product=sunlight" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufi super 1kg.jpeg" alt="Sufi Super Detergent 1kg">
+
+<h3>
+<a href="productsurf.html?product=sufisuper1kg">
+Sufi Super Detergent 1kg
+</a>
+</h3>
+
+<p>Rs. 460</p>
+
+<a href="productsurf.html?product=sufisuper1kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="brite surf 2kg.jpg" alt="Brite Detergent Powder 2kg">
+
+<h3>
+<a href="productsurf.html?product=brite2kg">
+Brite Detergent Powder 2kg
+</a>
+</h3>
+
+<p>Rs. 890</p>
+
+<a href="productsurf.html?product=brite2kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="bouns surf 1kg.jpg" alt="Bonus Detergent Powder 1kg">
+
+<h3>
+<a href="productsurf.html?product=bonus1kg">
+Bonus Detergent Powder 1kg
+</a>
+</h3>
+
+<p>Rs. 420</p>
+
+<a href="productsurf.html?product=bonus1kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="ariel surf 50.png" alt="Ariel Detergent 50g">
+
+<h3>
+<a href="productsurf.html?product=ariel50">
+Ariel Detergent 50g
+</a>
+</h3>
+
+<p>Rs. 50</p>
+
+<a href="productsurf.html?product=ariel50" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="ariel surf 1kg.jpg" alt="Ariel Detergent 1kg">
+
+<h3>
+<a href="productsurf.html?product=ariel1kg">
+Ariel Detergent 1kg
+</a>
+</h3>
+
+<p>Rs. 890</p>
+
+<a href="productsurf.html?product=ariel1kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="ariel surf 2kg .jpg" alt="Ariel Detergent 2kg">
+
+<h3>
+<a href="productsurf.html?product=ariel2kg">
+Ariel Detergent 2kg
+</a>
+</h3>
+
+<p>Rs. 1,750</p>
+
+<a href="productsurf.html?product=ariel2kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 9 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="surf excel 50 RS.jpg" alt="Surf Excel 50g">
+
+<h3>
+<a href="productsurf.html?product=surfexcel50">
+Surf Excel 50g
+</a>
+</h3>
+
+<p>Rs. 50</p>
+
+<a href="productsurf.html?product=surfexcel50" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 10 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="OIP-removebg-preview.png" alt="Surf Excel Detergent">
+
+<h3>
+<a href="productsurf.html?product=surfexcel">
+Surf Excel Detergent
+</a>
+</h3>
+
+<p>Rs. 450</p>
+
+<a href="productsurf.html?product=surfexcel" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 11 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="brite surf 1kg.png" alt="Brite Detergent 1kg">
+
+<h3>
+<a href="productsurf.html?product=brite1kg">
+Brite Detergent 1kg
+</a>
+</h3>
+
+<p>Rs. 460</p>
+
+<a href="productsurf.html?product=brite1kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 12 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="WerIV8zNbf2H3Ox-removebg-preview.png" alt="Express Detergent">
+
+<h3>
+<a href="productsurf.html?product=expressdetergent">
+Express Detergent
+</a>
+</h3>
+
+<p>Rs. 220</p>
+
+<a href="productsurf.html?product=expressdetergent" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 13 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="1019669iu-removebg-preview.png" alt="Surf Excel Detergent">
+
+<h3>
+<a href="productsurf.html?product=surfexcelclassic">
+Surf Excel Classic
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productsurf.html?product=surfexcelclassic" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 14 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__8_-removebg-preview.png" alt="Bonus Detergent">
+
+<h3>
+<a href="productsurf.html?product=bonusdetergent">
+Bonus Detergent
+</a>
+</h3>
+
+<p>Rs. 180</p>
+
+<a href="productsurf.html?product=bonusdetergent" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 15 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="8886950014180_940x-removebg-preview.png" alt="Surf Excel Easy Wash">
+
+<h3>
+<a href="productsurf.html?product=surfexceleasywash">
+Surf Excel Easy Wash
+</a>
+</h3>
+
+<p>Rs. 390</p>
+
+<a href="productsurf.html?product=surfexceleasywash" class="view-btn">
+View Details
+</a>
+
+</div>
+
+
+</div>
+          </section>
+ <script src="allproduct.js"></script>
+
+
+
+<script>
+
+
+</script>
+
+</body>
+</html> 
