@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking |Ali Store</title>
+     <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+
+    <style>
+        :root {
+
+            --bg: #0f1115;
+            --card: #171b22;
+            --primary: #f4b400;
+            --text: #ffffff;
+            --paragraph: #bdbdbd;
+            --green: #28c76f;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .product-page {
+            width: 100%;
+            background: #0f0f0f;
+            padding: 40px 30px 80px;
+            box-sizing: border-box;
+            overflow: hidden;
+            /* font-family: Arial, sans-serif; */
+        }
+
+        .product-page::before {
+            content: "";
+            position: absolute;
+            /* position: relative; */
+            overflow: hidden;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 136, 0, 0.12);
+            filter: blur(90px);
+            border-radius: 50%;
+            top: 120px;
+            left: 40px;
+        }
+
+        /* Half Image Banner */
+        .product-banner {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 25px;
+            margin-bottom: 60px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(255, 136, 0, 0.18);
+        }
+
+        .product-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .product-banner:hover img {
+            transform: scale(1.08);
+        }
+
+        .banner-text h1 {
+            text-shadow:
+                /* 0 0 20px rgba(255,136,0,.2), */
+                0 0 40px rgba(255, 136, 0, .12);
+        }
+
+        /* Dark overlay */
+        .product-banner::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right,
+                    rgba(0, 0, 0, 0.75),
+                    rgba(255, 136, 0, 0.12));
+        }
+
+        /* Products Grid */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 35px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 5;
+            margin-top: 0px;
+
+
+        }
+
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 70px;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .banner-text h1 {
+            color: white;
+            font-size: 64px;
+            margin-bottom: 15px;
+
+        }
+
+        .banner-text p {
+            color: #ddd;
+            font-size: 22px;
+        }
+
+        .hero-up {
+            padding: 40px 20px;
+        }
+
+        .products {
+            /* display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:25px; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+
+        }
+
+        .product-card {
+            width: 260px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: .4s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 77, 0, .25);
+        }
+
+        .product-card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: #fff3ec;
+            border-radius: 50%;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .product-card img {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            transition: .4s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            border: none;
+            background: none;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .product-card h3 {
+            margin-top: 15px;
+        }
+
+        .product-card h3 a {
+            text-decoration: none;
+            color: #222;
+            font-size: 22px;
+        }
+
+        .product-card p {
+            color: #ff4d00;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        /* Mobile */
+
+        @media(max-width:768px) {
+
+            .hero-up {
+                padding: 20px 10px;
+            }
+
+            .product-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .product-card img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .product-card h3 a {
+                font-size: 20px;
+            }
+
+            .product-card p {
+                font-size: 22px;
+            }
+        }
+
+        @media (min-width:768px) {
+
+            .products {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+        }
+        .view-btn {
+
+            display: inline-block;
+            margin-top: 18px;
+            padding: 12px 30px;
+            background: #ff8400;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: .35s;
+
+        }
+
+        .view-btn:hover {
+
+            background: #ffaa00;
+            transform: translateY(-3px);
+
+        }
+
+        .offer-box {
+
+            background: #171b22;
+            padding: 35px;
+            border-radius: 25px;
+            margin: 60px auto;
+            text-align: center;
+
+        }
+
+        .offer-box h2 {
+
+            color: white;
+            font-size: 34px;
+            margin-bottom: 12px;
+
+        }
+
+        .offer-box p {
+
+            color: #bdbdbd;
+            font-size: 17px;
+
+        }
+
+        .why {
+
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 90px 0;
+
+        }
+
+        .why-box {
+
+            width: 270px;
+            background: #171b22;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+
+        }
+
+        .why-box h3 {
+
+            color: white;
+            margin-bottom: 12px;
+
+        }
+
+        .why-box p {
+
+            color: #bdbdbd;
+
+        }
+
+        .line {
+
+            width: 120px;
+            height: 4px;
+            background: #f4b400;
+            margin: 50px auto;
+            border-radius: 20px;
+
+        }
+
+
+
+
+        /* ===========================
+   Tablet (992px)
+=========================== */
+
+        @media (max-width:992px) {
+
+            .banner-text {
+                left: 40px;
+            }
+
+            .banner-text h1 {
+                font-size: 48px;
+            }
+
+            .banner-text p {
+                font-size: 18px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .offer-box {
+                padding: 30px 20px;
+            }
+
+            .why {
+                gap: 20px;
+            }
+
+            .why-box {
+                width: 240px;
+            }
+
+        }
+
+
+        /* ===========================
+   Mobile (768px)
+=========================== */
+
+        @media (max-width:768px) {
+
+            .product-page {
+                padding: 20px 15px 60px;
+            }
+
+            .product-banner {
+                height: 280px;
+                border-radius: 18px;
+            }
+
+            .banner-text {
+                left: 20px;
+                right: 20px;
+            }
+
+            .banner-text h1 {
+                font-size: 34px;
+            }
+
+            .banner-text p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                margin-bottom: 35px;
+                padding: 0 15px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .section-title p {
+                font-size: 15px;
+            }
+
+            .products {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .product-card img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .offer-box {
+                margin: 40px 15px;
+                padding: 25px 20px;
+            }
+
+            .offer-box h2 {
+                font-size: 26px;
+            }
+
+            .offer-box p {
+                font-size: 15px;
+            }
+
+            .why {
+                flex-direction: column;
+                align-items: center;
+                margin: 60px 15px;
+            }
+
+            .why-box {
+                width: 100%;
+                max-width: 320px;
+            }
+
+        }
+
+
+        /* ===========================
+   Small Mobile (480px)
+=========================== */
+
+        @media (max-width:480px) {
+
+            .banner-text h1 {
+                font-size: 28px;
+            }
+
+            .banner-text p {
+                font-size: 14px;
+            }
+
+            .section-title h2 {
+                font-size: 24px;
+            }
+
+            .product-card {
+                padding: 18px;
+            }
+
+            .view-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+        }
+
+        .product-card{
+    opacity:0;
+    transform:translateY(40px);
+    animation:show .7s forwards;
+}
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+/* Premium Back Button */
+
+.back-btn{
+    position:fixed;
+    top:25px;
+    left:25px;
+    width:52px;
+    height:52px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    color:#000000;
+    font-size:24px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.35);
+    transition:.35s ease;
+    z-index:9999;
+}
+
+.back-btn:hover{
+    transform:translateY(-4px) scale(1.08);
+    background:#ff8800;
+    box-shadow:0 15px 40px rgba(255,136,0,.45);
+}
+
+.back-btn:active{
+    transform:scale(.95);
+}
+
+@media(max-width:768px){
+
+.back-btn{
+    width:46px;
+    height:46px;
+    top:18px;
+    left:18px;
+    font-size:21px;
+}
+
+}
+
+
+    </style>
+</head>
+
+<body>
+    <button class="back-btn" onclick="history.back()">
+    ←
+</button>
+
+
+    <section class="product-page">
+
+        <!-- Hero Banner -->
+        <div class="product-banner">
+            <img src="main oil image .jpg" alt="Banner">
+
+            <div class="banner-text">
+                <h1>Premium Cooking Oil</h1>
+<p>Pure • Healthy • Fast Delivery</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="offer-box">
+
+       <h2>Pure Cooking Oil & Ghee</h2>
+
+<p>
+Cook delicious meals with premium cooking oils and quality banaspati ghee for every kitchen.
+</p>
+
+    </section>
+    <section class="hero-up">
+        <div class="line"></div>
+        <div class="products">
+
+            <!-- 1 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="conalive oil 5 kg .jpg" alt="Canolive Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=canolive5kg">
+Canolive Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,150</p>
+
+<a href="productsoil.html?product=canolive5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="dalda oil 5kg.jpg" alt="Dalda Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=dalda5kg">
+Dalda Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,050</p>
+
+<a href="productsoil.html?product=dalda5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="evaa 5kg.jpg" alt="Eva Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=eva5kg">
+Eva Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 2,950</p>
+
+<a href="productsoil.html?product=eva5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="habib super .... 5kg .jpg" alt="Habib Super Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=habibsuper5kg">
+Habib Super Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,180</p>
+
+<a href="productsoil.html?product=habibsuper5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="JEeb_G7SS8NGVLnQeRUGuS_WXJqylAD87MC3uacKDeg4loUmYNLjfvCglk2HqBqSCFW9zc0zeQfDnJNv9jpjPejVyajGjeSpmwzP0sMxcCgO0bHhmQaOFUd71HwttSMwfZFWR4hoBsFN8tWt7r4EBkc2QBreBAMvJRe7zfEN0l37IA-dNbQWOlcigZ3O17vG.jpg" alt="Habib Cooking Oil">
+
+<h3>
+<a href="productsoil.html?product=habiboil">
+Habib Cooking Oil
+</a>
+</h3>
+
+<p>Rs. 680</p>
+
+<a href="productsoil.html?product=habiboil" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="mazan ghee.jpg" alt="Mezan Banaspati Ghee">
+
+<h3>
+<a href="productsoil.html?product=mezanghee">
+Mezan Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,890</p>
+
+<a href="productsoil.html?product=mezanghee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="mazan oil 5kg.jpg" alt="Mezan Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=mezanoil5kg">
+Mezan Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,090</p>
+
+<a href="productsoil.html?product=mezanoil5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="shan ghee.png" alt="Shan Banaspati Ghee">
+
+<h3>
+<a href="productsoil.html?product=shanghee">
+Shan Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,950</p>
+
+<a href="productsoil.html?product=shanghee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 9 -->
+
+<div class="product-card">
+    <button class="wishlist-btn">
+
+<i class="fa-regular fa-heart     heart"></i>
+</button>
+
+<img src="shan-cooking-oil.webp" alt="Shan Cooking Oil">
+
+<h3>
+<a href="productsoil.html?product=shanoil">
+Shan Cooking Oil
+</a>
+</h3>
+
+<p>Rs. 690</p>
+
+<a href="productsoil.html?product=shanoil" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 10 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Shan-Cooking-Oil-1x12-1.jpg" alt="Shan Cooking Oil 1L">
+
+<h3>
+<a href="productsoil.html?product=shanoil1l">
+Shan Cooking Oil 1L
+</a>
+</h3>
+
+<p>Rs. 780</p>
+
+<a href="productsoil.html?product=shanoil1l" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- 11 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii 1 pack.jpg" alt="Sufi Cooking Oil Pouch">
+
+<h3>
+<a href="productsoil.html?product=sufipouch">
+Sufi Cooking Oil Pouch
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productsoil.html?product=sufipouch" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 12 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii ghee.jpg" alt="Sufi Banaspati Ghee">
+
+<h3>
+<a href="productoil.html?product=sufighee">
+Sufi Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,990</p>
+
+<a href="productoil.html?product=sufighee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 13 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii oil.png" alt="Sufi Cooking Oil">
+
+<h3>
+<a href="productsoil.html?product=sufioil">
+Sufi Cooking Oil
+</a>
+</h3>
+
+<p>Rs. 710</p>
+
+<a href="productsoil.html?product=sufioil" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 14 -->
+
+<div class="product-card">
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufioil-canola-standingpouch-box-3047895-simplysufi-removebg-preview.png" alt="Sufi Canola Cooking Oil">
+
+<h3>
+<a href="productsoil.html?product=suficanola">
+Sufi Canola Cooking Oil
+</a>
+</h3>
+
+<p>Rs. 950</p>
+
+<a href="productsoil.html?product=suficanola" class="view-btn">
+View Details
+</a>
+
+</div>
+            
+
+
+
+
+        </div>
+    </section>
+    <section class="why">
+
+        <div class="why-box">
+
+         <h3>🛢 Premium Quality</h3>
+
+<p>Trusted cooking oils and ghee for every meal.</p>
+        </div>
+
+        <div class="why-box">
+
+           <h3>🚚 Fast Delivery</h3>
+
+<p>Fresh products delivered quickly to your doorstep.</p>
+
+        </div>
+
+        <div class="why-box">
+
+           <h3>💳 Secure Payment</h3>
+
+<p>Safe and secure checkout with trusted payment methods.</p>
+
+        </div>
+
+    </section>
+
+ 
+
+    <script src="product.js"></script>
+<script src="indexproduct.js"></script>
+
+
+    <script>
+
+
+    </script>
+
+</body>
+
+</html>
