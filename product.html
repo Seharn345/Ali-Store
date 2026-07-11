@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Products | Ali Store </title>
+ <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<style>
+
+:root{
+
+--bg:#0f1115;
+--card:#171b22;
+--card2:#1d232c;
+--primary:#ff8800;
+--primary2:#ffb347;
+--text:#ffffff;
+--paragraph:#bdbdbd;
+--border:rgba(255,255,255,.08);
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:var(--bg);
+font-family:Arial,Helvetica,sans-serif;
+color:var(--text);
+overflow-x:hidden;
+
+}
+
+/* Glow */
+
+body::before{
+
+content:"";
+position:fixed;
+width:420px;
+height:420px;
+background:rgba(255,136,0,.12);
+filter:blur(120px);
+top:-80px;
+left:-80px;
+border-radius:50%;
+pointer-events:none;
+z-index:-1;
+
+}
+
+body::after{
+
+content:"";
+position:fixed;
+width:350px;
+height:350px;
+background:rgba(255,136,0,.08);
+filter:blur(130px);
+right:-120px;
+bottom:-100px;
+border-radius:50%;
+pointer-events:none;
+z-index:-1;
+
+}
+
+/* Back Button */
+
+.back-btn{
+
+position:fixed;
+top:22px;
+left:22px;
+width:52px;
+height:52px;
+border:none;
+border-radius:50%;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+color:#fff;
+font-size:23px;
+cursor:pointer;
+transition:.35s;
+z-index:999;
+
+}
+
+.back-btn:hover{
+
+background:var(--primary);
+transform:translateY(-4px);
+
+}
+
+/* Main */
+
+.container{
+
+width:95%;
+max-width:1450px;
+margin:auto;
+padding:90px 0 60px;
+
+}
+
+/* Heading */
+
+.page-title{
+
+text-align:center;
+margin-bottom:45px;
+
+}
+
+.page-title h1{
+
+font-size:60px;
+margin-bottom:15px;
+letter-spacing:1px;
+
+}
+
+.page-title span{
+
+color:var(--primary);
+
+}
+
+.page-title p{
+
+color:var(--paragraph);
+font-size:18px;
+
+}
+
+/* Search */
+
+.search-box{
+
+max-width:650px;
+margin:45px auto;
+
+}
+
+.search-box input{
+
+width:100%;
+padding:18px 24px;
+background:#171b22;
+border:1px solid rgba(255,255,255,.08);
+border-radius:60px;
+outline:none;
+font-size:17px;
+color:white;
+transition:.35s;
+
+}
+
+.search-box input:focus{
+
+border-color:var(--primary);
+box-shadow:0 0 25px rgba(255,136,0,.25);
+
+}
+
+/* Filter */
+
+.filter-buttons{
+
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:15px;
+margin-bottom:55px;
+
+}
+
+.filter-buttons button{
+
+padding:13px 28px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:#1a1f27;
+color:white;
+font-size:15px;
+transition:.35s;
+
+}
+
+.filter-buttons button:hover{
+
+background:var(--primary);
+transform:translateY(-4px);
+
+}
+
+.filter-buttons .active{
+
+background:var(--primary);
+
+}
+
+/* Products */
+
+.products{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
+
+}
+
+/* Card */
+
+.product-card{
+
+background:white;
+border-radius:22px;
+padding:20px;
+position:relative;
+overflow:hidden;
+text-align:center;
+transition:.35s;
+box-shadow:0 15px 35px rgba(0,0,0,.20);
+
+}
+
+.product-card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.product-card::before{
+
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:#fff3ec;
+border-radius:50%;
+top:-35px;
+left:50%;
+transform:translateX(-50%);
+
+}
+
+.product-card img{
+
+width:170px;
+height:170px;
+object-fit:contain;
+position:relative;
+z-index:2;
+transition:.35s;
+
+}
+
+.product-card:hover img{
+
+transform:scale(1.08);
+
+}
+
+.category{
+
+position:absolute;
+top:18px;
+left:18px;
+background:var(--primary);
+color:white;
+padding:6px 14px;
+font-size:12px;
+border-radius:30px;
+z-index:3;
+
+}
+
+.wishlist-btn{
+
+position:absolute;
+top:16px;
+right:16px;
+background:none;
+border:none;
+font-size:22px;
+cursor:pointer;
+z-index:3;
+
+}
+
+.product-card h3{
+
+margin-top:18px;
+
+}
+
+.product-card h3 a{
+
+text-decoration:none;
+color:#222;
+font-size:22px;
+
+}
+
+.product-card p{
+
+color:var(--primary);
+font-size:24px;
+font-weight:bold;
+margin-top:10px;
+
+}
+
+.view-btn{
+
+display:inline-block;
+margin-top:18px;
+padding:13px 30px;
+border-radius:40px;
+background:var(--primary);
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.35s;
+
+}
+
+.view-btn:hover{
+
+background:#ffab2d;
+transform:translateY(-3px);
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.page-title h1{
+
+font-size:40px;
+
+}
+
+.page-title p{
+
+font-size:15px;
+
+}
+
+.container{
+
+padding-top:80px;
+
+}
+
+.products{
+
+grid-template-columns:1fr;
+
+}
+
+.product-card{
+
+max-width:340px;
+margin:auto;
+
+}
+
+}
+
+
+.like-count{
+
+display:block;
+
+font-size:13px;
+
+font-weight:700;
+
+margin-top:5px;
+
+text-align:center;
+
+color:#666;
+
+font-family:Poppins,sans-serif;
+
+}
+
+.wishlist-btn.liked i{
+
+color:#ff2d55;
+
+}
+
+.wishlist-btn{
+
+transition:.3s;
+
+}
+
+.wishlist-btn:hover{
+
+transform:scale(1.08);
+
+}
+
+
+/*=========================
+PRODUCT COUNTER
+=========================*/
+
+.product-info{
+
+    max-width:1200px;
+    margin:25px auto;
+    padding:0 20px;
+
+}
+
+#productCount{
+
+    color:#d5d5d5;
+    font-size:17px;
+    font-weight:500;
+    letter-spacing:.5px;
+
+}
+
+#productCount span{
+
+    color:#ff9500;
+    font-weight:bold;
+
+}
+
+
+
+
+/*=========================
+NO PRODUCTS
+=========================*/
+
+.no-products{
+
+    display:none;
+    text-align:center;
+    padding:80px 20px;
+
+}
+
+.no-products i{
+
+    font-size:70px;
+    color:#ff9500;
+    margin-bottom:20px;
+
+}
+
+.no-products h2{
+
+    color:white;
+    font-size:34px;
+    margin-bottom:15px;
+
+}
+
+.no-products p{
+
+    color:#bdbdbd;
+    line-height:1.8;
+    margin-bottom:30px;
+
+}
+
+.no-products button{
+
+    background:#ff9500;
+    color:white;
+    border:none;
+    padding:15px 35px;
+    border-radius:40px;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.no-products button:hover{
+
+    background:#ff7a00;
+    transform:translateY(-3px);
+
+}
+</style>
+
+</head>
+<body>
+    <body>
+
+<!-- Back Button -->
+<button class="back-btn" onclick="history.back()">&#8592;</button>
+
+<div class="container">
+
+    <!-- Heading -->
+    <div class="page-title">
+
+        <h1>
+            All <span>Products</span>
+        </h1>
+
+        <p>
+            Explore every product in one premium collection.
+        </p>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search products...">
+
+    </div>
+
+    <div class="product-info">
+
+    <p id="productCount">
+        Showing 0 Products
+    </p>
+
+</div>
+
+    <!-- Filters -->
+
+    <div class="filter-buttons">
+
+        <button class="active" data-filter="all">
+            All
+        </button>
+
+        <button data-filter="drinks">
+            Drinks
+        </button>
+
+        <button data-filter="snacks">
+            Snacks
+        </button>
+
+        <button data-filter="cooking">
+            Cooking
+        </button>
+
+        <button data-filter="rice">
+            Rice
+        </button>
+
+        <button data-filter="bakery">
+            Bakery
+        </button>
+
+        <button data-filter="dairy">
+            Dairy
+        </button>
+
+    </div>
+
+
+
+
+    <div id="noProducts" class="no-products">
+
+    <i class="fas fa-search"></i>
+
+    <h2>No Products Found</h2>
+
+    <p>
+        We couldn't find any matching products.
+        <br>
+        Try another keyword or choose a different category.
+    </p>
+
+    <button id="showAllBtn">
+        Show All Products
+    </button>
+
+</div>
+
+    <!-- Products -->
+
+    <div class="products" id="products">
+
+       <!-- ========================= -->
+<!-- COOKING PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="conalive oil 5 kg .jpg" alt="Canolive Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=canolive5kg">
+Canolive Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,150</p>
+
+<a href="productsoil.html?product=canolive5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="evaa 5kg.jpg" alt="Eva Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=eva5kg">
+Eva Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 2,950</p>
+
+<a href="productsoil.html?product=eva5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="dalda oil 5kg.jpg" alt="Dalda Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=dalda5kg">
+Dalda Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,050</p>
+
+<a href="productsoil.html?product=dalda5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii oil.png" alt="Sufi Cooking Oil">
+
+<h3>
+<a href="productsoil.html?product=sufioil">
+Sufi Cooking Oil
+</a>
+</h3>
+
+<p>Rs. 710</p>
+
+<a href="productsoil.html?product=sufioil" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii ghee.jpg" alt="Sufi Banaspati Ghee">
+
+<h3>
+<a href="productsoil.html?product=sufighee">
+Sufi Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,990</p>
+
+<a href="productsoil.html?product=sufighee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+
+
+
+<!-- ========================= -->
+<!-- DAIRY PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="egg_12-removebg-preview.png" alt="Farm Fresh Eggs 12 Pack">
+
+<h3>
+<a href="productsdairy.html?product=eggs12">
+Farm Fresh Eggs (12 Pack)
+</a>
+</h3>
+
+<p>Rs. 520</p>
+
+<a href="productsdairy.html?product=eggs12" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="baby-shampoo-removebg-preview.png" alt="Omung Double Cream">
+
+<h3>
+<a href="productsdairy.html?product=omungcream">
+Omung Double Cream 200ml
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productsdairy.html?product=omungcream" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__8_-removebg-preview (1).png" alt="Milk Pack">
+
+<h3>
+<a href="productsdairy.html?product=milkpack">
+Fresh Milk Pack
+</a>
+</h3>
+
+<p>Rs. 290</p>
+
+<a href="productsdairy.html?product=milkpack" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="tapal_1kg-removebg-preview.png" alt="Tapal Tea 1kg">
+
+<h3>
+<a href="productsdairy.html?product=tapaltea">
+Tapal Tea 1kg
+</a>
+</h3>
+
+<p>Rs. 1,490</p>
+
+<a href="productsdairy.html?product=tapaltea" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="vital tea jar.webp" alt="Vital Tea Jar">
+
+<h3>
+<a href="productsdairy.html?product=vitaltea">
+Vital Tea Jar
+</a>
+</h3>
+
+<p>Rs. 1,250</p>
+
+<a href="productsdairy.html?product=vitaltea" class="view-btn">
+View Details
+</a>
+
+</div>
+    
+    <!-- ========================= -->
+<!-- JUICE PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__10_-removebg-preview.png" alt="Fruita Vitals Juice">
+
+<h3>
+<a href="productsdrinks.html?product=fruitavitals">
+Fruita Vitals Juice
+</a>
+</h3>
+
+<p>Rs. 180</p>
+
+<a href="productsdrinks.html?product=fruitavitals" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="POPULAR-MAZA-MANGO-FRUIT-DRINK-PET-BOTTLE-500ML-1.jpg" alt="Maaza Mango">
+
+<h3>
+<a href="productsdrinks.html?product=maaza500">
+Maaza Mango 500ml
+</a>
+</h3>
+
+<p>Rs. 120</p>
+
+<a href="productsdrinks.html?product=maaza500" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="AURCTXAC9pRsI4BqKkni6YPeAZ-i3SKdxnn68rqG7-Sn4ymroiJJVDYHDJg9gYfCPrkpITkba5GMqSTHmBxPgsmQTpm9HtIVxpXlIcwpB8CUfchoqyJtBd90t5rbvrg-klpjSwsXcxHAq1Lu-pQT-Yqp5EncPU9PKYq1iG_MUxuQMNDQOx0ZoPcO5pRYxoA7.jpg" alt="Fruit Juice">
+
+<h3>
+<a href="productsdrinks.html?product=juice3">
+Premium Fruit Juice
+</a>
+</h3>
+
+<p>Rs. 240</p>
+
+<a href="productsdrinks.html?product=juice3" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="8scP8sPVn9uSsojAl3iknsg8sfAHq0okrYPlNn0pjMokrtP0XV6GrEptYy-7Rwxil_3CtGT0ofEnoMHvXsviROyZ0woiYw6LaB7Z-ITUiWJOHliHx3_q6wKBSdf0bEg9o8gnX9YCRDNib9cjVNWv70uEIAdv14VB4wF5ifl7SVugcPZduQ69P1S6x2n9joFY.jpg" alt="Mixed Fruit Juice">
+
+<h3>
+<a href="productsdrinks.html?product=juice4">
+Mixed Fruit Juice
+</a>
+</h3>
+
+<p>Rs. 260</p>
+
+<a href="productsdrinks.html?product=juice4" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- SNACKS PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="cheetos.png" alt="Cheetos">
+
+<h3>
+<a href="productsweetsnack.html?product=cheetos">
+Cheetos
+</a>
+</h3>
+
+<p>Rs. 80</p>
+
+<a href="productsweetsnack.html?product=cheetos" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="cheetos 10.jpg" alt="Cheetos 10">
+
+<h3>
+<a href="productsweetsnack.html?product=cheetos10">
+Cheetos 10
+</a>
+</h3>
+
+<p>Rs. 10</p>
+
+<a href="productsweetsnack.html?product=cheetos10" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lays_maxx_70-removebg-preview.png" alt="Lays Maxx">
+
+<h3>
+<a href="productsweetsnack.html?product=laysmaxx">
+Lays Maxx
+</a>
+</h3>
+
+<p>Rs. 70</p>
+
+<a href="productsweetsnack.html?product=laysmaxx" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lays_maxx_cheese_70-removebg-preview.png" alt="Lays Maxx Cheese">
+
+<h3>
+<a href="productsweetsnack.html?product=laysmaxxcheese">
+Lays Maxx Cheese
+</a>
+</h3>
+
+<p>Rs. 70</p>
+
+<a href="productsweetsnack.html?product=laysmaxxcheese" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lays_paprika100_best-removebg-preview.png" alt="Lays Paprika">
+
+<h3>
+<a href="productsweetsnack.html?product=layspaprika">
+Lays Paprika
+</a>
+</h3>
+
+<p>Rs. 100</p>
+
+<a href="productsweetsnack.html?product=layspaprika" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="super crisp .png" alt="Super Crisp">
+
+<h3>
+<a href="productsweetsnack.html?product=supercrisp">
+Super Crisp
+</a>
+</h3>
+
+<p>Rs. 50</p>
+
+<a href="productsweetsnack.html?product=supercrisp" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="zia-mix-nimko.png" alt="Zia Mix Nimko">
+
+<h3>
+<a href="productsweetsnack.html?product=ziamixnimko">
+Zia Mix Nimko
+</a>
+</h3>
+
+<p>Rs. 180</p>
+
+<a href="productsweetsnack.html?product=ziamixnimko" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="product-card" data-category="snacks">
+
+<span class="category">Snacks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="superr crisp twister.png" alt="Super Crisp Twister">
+
+<h3>
+<a href="productsweetsnack.html?product=supercrisptwister">
+Super Crisp Twister
+</a>
+</h3>
+
+<p>Rs. 60</p>
+
+<a href="productsweetsnack.html?product=supercrisptwister" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- DRINKS PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="coca-cola-bottle-1-ltr-975111-removebg-preview.png" alt="Coca Cola 1L">
+
+<h3>
+<a href="productdrinks.html?product=cocacola1ltr">
+Coca Cola 1L
+</a>
+</h3>
+
+<p>Rs. 250</p>
+
+<a href="productdrinks.html?product=cocacola1ltr" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="fanta_1.5-removebg-preview.png" alt="Fanta 1.5L">
+
+<h3>
+<a href="productdrinks.html?product=fanta15ltr">
+Fanta 1.5L
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productdrinks.html?product=fanta15ltr" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="fanta_soda_orangecan-removebg-preview.png" alt="Fanta Orange Can">
+
+<h3>
+<a href="productdrinks.html?product=fantacan">
+Fanta Orange Can
+</a>
+</h3>
+
+<p>Rs. 120</p>
+
+<a href="productdrinks.html?product=fantacan" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="fanta-soft-drink_2ml-removebg-preview.png" alt="Fanta Soft Drink">
+
+<h3>
+<a href="productdrinks.html?product=fanta2ltr">
+Fanta Soft Drink 2L
+</a>
+</h3>
+
+<p>Rs. 350</p>
+
+<a href="productdrinks.html?product=fanta2ltr" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="papiss_-removebg-preview.png" alt="Pepsi">
+
+<h3>
+<a href="productdrinks.html?product=pepsi1ltr">
+Pepsi 1L
+</a>
+</h3>
+
+<p>Rs. 250</p>
+
+<a href="productdrinks.html?product=pepsi1ltr" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Pepsi-500Ml-1-removebg-preview.png" alt="Pepsi 500ml">
+
+<h3>
+<a href="productdrinks.html?product=pepsi500">
+Pepsi 500ml
+</a>
+</h3>
+
+<p>Rs. 120</p>
+
+<a href="productdrinks.html?product=pepsi500" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sprite_can_250ml-removebg-preview.png" alt="Sprite Can">
+
+<h3>
+<a href="productdrinks.html?product=spritecan">
+Sprite Can 250ml
+</a>
+</h3>
+
+<p>Rs. 120</p>
+
+<a href="productdrinks.html?product=spritecan" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="product-card" data-category="drinks">
+
+<span class="category">Drinks</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="54491472-removebg-preview.png" alt="7UP">
+
+<h3>
+<a href="productdrinks.html?product=7up">
+7UP 1.5L
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productdrinks.html?product=7up" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- SOAP & SHAMPOO PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="baby-shampoo-removebg-preview.png" alt="Baby Shampoo">
+
+<h3>
+<a href="productsoap.html?product=babyshampoo">
+Baby Shampoo
+</a>
+</h3>
+
+<p>Rs. 550</p>
+
+<a href="productsoap.html?product=babyshampoo" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="clear-men-cool-removebg-preview.png" alt="Clear Men Cool">
+
+<h3>
+<a href="productsoap.html?product=clearmen">
+Clear Men Cool Shampoo
+</a>
+</h3>
+
+<p>Rs. 780</p>
+
+<a href="productsoap.html?product=clearmen" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="dove_soap90g-removebg-preview.png" alt="Dove Soap">
+
+<h3>
+<a href="productsoap.html?product=dovesoap">
+Dove Beauty Soap
+</a>
+</h3>
+
+<p>Rs. 210</p>
+
+<a href="productsoap.html?product=dovesoap" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lifebuay_soap-removebg-preview.png" alt="Lifebuoy Soap">
+
+<h3>
+<a href="productsoap.html?product=lifebuoysoap">
+Lifebuoy Soap
+</a>
+</h3>
+
+<p>Rs. 180</p>
+
+<a href="productsoap.html?product=lifebuoysoap" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lifebuoy_shampoo_herbal_200ml-removebg-preview.png" alt="Lifebuoy Herbal Shampoo">
+
+<h3>
+<a href="productsoap.html?product=lifebuoyherbal">
+Lifebuoy Herbal Shampoo
+</a>
+</h3>
+
+<p>Rs. 430</p>
+
+<a href="productsoap.html?product=lifebuoyherbal" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lifebuoy-shampoo-naturally-strong-650ml-removebg-preview.png" alt="Lifebuoy Naturally Strong">
+
+<h3>
+<a href="productsoap.html?product=lifebuoystrong">
+Lifebuoy Naturally Strong
+</a>
+</h3>
+
+<p>Rs. 980</p>
+
+<a href="productsoap.html?product=lifebuoystrong" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="LOreal-Elvive-Total-Repair-removebg-preview (1).png" alt="Loreal Elvive">
+
+<h3>
+<a href="productsoap.html?product=loreal">
+L'Oréal Elvive Total Repair
+</a>
+</h3>
+
+<p>Rs. 1,450</p>
+
+<a href="productsoap.html?product=loreal" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="lux-nourished-removebg-preview.png" alt="Lux Soap">
+
+<h3>
+<a href="productsoap.html?product=lux">
+Lux Nourished Glow Soap
+</a>
+</h3>
+
+<p>Rs. 190</p>
+
+<a href="productsoap.html?product=lux" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 9 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="skin saop.webp" alt="Skin Soap">
+
+<h3>
+<a href="productsoap.html?product=skinsoap">
+Skin Care Soap
+</a>
+</h3>
+
+<p>Rs. 230</p>
+
+<a href="productsoap.html?product=skinsoap" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 10 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="-Soap-Pack1-removebg-preview.png" alt="Soap Pack">
+
+<h3>
+<a href="productsoap.html?product=soappack">
+Family Soap Pack
+</a>
+</h3>
+
+<p>Rs. 650</p>
+
+<a href="productsoap.html?product=soappack" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- SOAP & SHAMPOO PRODUCTS -->
+<!-- PART 4 -->
+<!-- ========================= -->
+
+<!-- 11 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="tresemme_shampoo-removebg-preview (1).png" alt="Tresemme Shampoo">
+
+<h3>
+<a href="productsoap.html?product=tresemme">
+Tresemmé Shampoo
+</a>
+</h3>
+
+<p>Rs. 1,250</p>
+
+<a href="productsoap.html?product=tresemme" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 12 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Sunsilk-Thick-Long-Shampoo-removebg-preview.png" alt="Sunsilk Thick & Long">
+
+<h3>
+<a href="productsoap.html?product=sunsilk">
+Sunsilk Thick & Long
+</a>
+</h3>
+
+<p>Rs. 690</p>
+
+<a href="productsoap.html?product=sunsilk" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 13 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="meclay-london-removebg-preview.png" alt="Meclay London">
+
+<h3>
+<a href="productsoap.html?product=meclay">
+Meclay London Shampoo
+</a>
+</h3>
+
+<p>Rs. 540</p>
+
+<a href="productsoap.html?product=meclay" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 14 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="safeguardjpg-removebg-preview.png" alt="Safeguard Soap">
+
+<h3>
+<a href="productsoap.html?product=safeguard">
+Safeguard Soap
+</a>
+</h3>
+
+<p>Rs. 210</p>
+
+<a href="productsoap.html?product=safeguard" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 15 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="POND-removebg-preview.png" alt="Pond's">
+
+<h3>
+<a href="productsoap.html?product=ponds">
+Pond's Face Wash
+</a>
+</h3>
+
+<p>Rs. 420</p>
+
+<a href="productsoap.html?product=ponds" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 16 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="shulders_hire-removebg-preview.png" alt="Head & Shoulders">
+
+<h3>
+<a href="productsoap.html?product=headshoulders">
+Head & Shoulders Shampoo
+</a>
+</h3>
+
+<p>Rs. 980</p>
+
+<a href="productsoap.html?product=headshoulders" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 17 -->
+
+<div class="product-card" data-category="soap">
+
+<span class="category">Soap</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="golden-pearl-face-wash-men.png" alt="Golden Pearl Face Wash">
+
+<h3>
+<a href="productsoap.html?product=goldenpearl">
+Golden Pearl Men Face Wash
+</a>
+</h3>
+
+<p>Rs. 590</p>
+
+<a href="productsoap.html?product=goldenpearl" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- DAIRY PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="DD-BNo.8961103600493-900g-Left-Side.png" alt="Dairy Milk Powder">
+
+<h3>
+<a href="productdairy.html?product=dairymilkpowder">
+Dairy Milk Powder 900g
+</a>
+</h3>
+
+<p>Rs. 1,850</p>
+
+<a href="productdairy.html?product=dairymilkpowder" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="egg_6-removebg-preview.png" alt="Eggs 6 Pack">
+
+<h3>
+<a href="productdairy.html?product=eggs6">
+Farm Fresh Eggs (6 Pack)
+</a>
+</h3>
+
+<p>Rs. 280</p>
+
+<a href="productdairy.html?product=eggs6" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__8_-removebg-preview (1).png" alt="Fresh Milk">
+
+<h3>
+<a href="productdairy.html?product=freshmilk">
+Fresh Milk
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productdairy.html?product=freshmilk" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__12_-removebg-preview.png" alt="Butter">
+
+<h3>
+<a href="productdairy.html?product=butter">
+Fresh Butter
+</a>
+</h3>
+
+<p>Rs. 690</p>
+
+<a href="productdairy.html?product=butter" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="haleeb-cremyum-fresh-milk-cream-200-ml-125902-removebg-preview.png" alt="Haleeb Cream">
+
+<h3>
+<a href="productdairy.html?product=haleebcream">
+Haleeb Fresh Cream 200ml
+</a>
+</h3>
+
+<p>Rs. 290</p>
+
+<a href="productdairy.html?product=haleebcream" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 6 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Yoghurt-NEW-removebg-preview.png" alt="Yogurt">
+
+<h3>
+<a href="productdairy.html?product=yogurt">
+Fresh Yogurt
+</a>
+</h3>
+
+<p>Rs. 240</p>
+
+<a href="productdairy.html?product=yogurt" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 7 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="whole-milk-new-packaging-1 (1).png" alt="Whole Milk">
+
+<h3>
+<a href="productdairy.html?product=wholemilk">
+Whole Milk
+</a>
+</h3>
+
+<p>Rs. 340</p>
+
+<a href="productdairy.html?product=wholemilk" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 8 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Nestle20Milk20-removebg-preview.png" alt="Nestle Milk">
+
+<h3>
+<a href="productdairy.html?product=nestlemilk">
+Nestlé Milk
+</a>
+</h3>
+
+<p>Rs. 360</p>
+
+<a href="productdairy.html?product=nestlemilk" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 9 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="rich_creamy_dairy_-removebg-preview.png" alt="Creamy Dairy">
+
+<h3>
+<a href="productdairy.html?product=creamydairy">
+Rich Creamy Dairy
+</a>
+</h3>
+
+<p>Rs. 520</p>
+
+<a href="productdairy.html?product=creamydairy" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 10 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="orgsize_40679WhatsApp_20Image_202024-08-16_20at_205.00.07_20PM-removebg-preview.png" alt="Cheese">
+
+<h3>
+<a href="productdairy.html?product=cheese">
+Cheddar Cheese
+</a>
+</h3>
+
+<p>Rs. 780</p>
+
+<a href="productdairy.html?product=cheese" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 11 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Nido_Fortigrow_School_Age_Nutrition_900g_1000x-removebg-preview.png" alt="Nido Fortigrow">
+
+<h3>
+<a href="productdairy.html?product=nido900">
+Nido Fortigrow 900g
+</a>
+</h3>
+
+<p>Rs. 2,750</p>
+
+<a href="productdairy.html?product=nido900" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 12 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="Nestle-Everday-Milk-Powder-230gms-removebg-preview.png" alt="Everyday Milk Powder">
+
+<h3>
+<a href="productdairy.html?product=everyday230">
+Nestlé EveryDay Milk Powder 230g
+</a>
+</h3>
+
+<p>Rs. 580</p>
+
+<a href="productdairy.html?product=everyday230" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 13 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="images__14_-removebg-preview.png" alt="Milk">
+
+<h3>
+<a href="productdairy.html?product=milkpack2">
+Premium Milk Pack
+</a>
+</h3>
+
+<p>Rs. 330</p>
+
+<a href="productdairy.html?product=milkpack2" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 14 -->
+
+<div class="product-card" data-category="dairy">
+
+<span class="category">Dairy</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="buy_omung_dobala_cream_200ML_-removebg-preview.png" alt="Omung Cream">
+
+<h3>
+<a href="productdairy.html?product=omungcream">
+Omung Double Cream 200ml
+</a>
+</h3>
+
+<p>Rs. 320</p>
+
+<a href="productdairy.html?product=omungcream" class="view-btn">
+View Details
+</a>
+
+</div>
+<!-- ========================= -->
+<!-- COOKING PRODUCTS -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="mazan ghee.jpg" alt="Mezan Banaspati Ghee">
+
+<h3>
+<a href="productsoil.html?product=mezanghee">
+Mezan Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,850</p>
+
+<a href="productsoil.html?product=mezanghee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="shan ghee.png" alt="Shan Banaspati Ghee">
+
+<h3>
+<a href="productsoil.html?product=shanghee">
+Shan Banaspati Ghee
+</a>
+</h3>
+
+<p>Rs. 2,950</p>
+
+<a href="productsoil.html?product=shanghee" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="sufii 5kg.jpg" alt="Sufi Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=sufi5kg">
+Sufi Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,180</p>
+
+<a href="productsoil.html?product=sufi5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="dalda oil 5kg.jpg" alt="Dalda Cooking Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=dalda5kg">
+Dalda Cooking Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,050</p>
+
+<a href="productsoil.html?product=dalda5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 5 -->
+
+<div class="product-card" data-category="cooking">
+
+<span class="category">Cooking</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="habib super .... 5kg .jpg" alt="Habib Super Oil 5kg">
+
+<h3>
+<a href="productsoil.html?product=habib5kg">
+Habib Super Oil 5kg
+</a>
+</h3>
+
+<p>Rs. 3,120</p>
+
+<a href="productsoil.html?product=habib5kg" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- ========================= -->
+<!-- JUICES -->
+<!-- ========================= -->
+
+<!-- 1 -->
+
+<div class="product-card" data-category="juices">
+
+<span class="category">Juices</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="T9BqYnbUPAhS5F0o1tRl9JVR4N5PL0Kxs5hmERbo5f34eCnFXO06esgq3oe8eqlK8H5m-uB_PNujXxjPKllzajmJYXFWi8IH08l3xvaVCvcV65DElltmTQ7HfYrztrIfsOVTm5VJ6TjoRNRBxr5kZO1bx_Mt-QuXLeLowLBy92LOXuObzFkVp1tXJnrNLD76.jpg" alt="Fruit Juice">
+
+<h3>
+<a href="productjuice.html?product=juice1">
+Premium Fruit Juice
+</a>
+</h3>
+
+<p>Rs. 240</p>
+
+<a href="productjuice.html?product=juice1" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 2 -->
+
+<div class="product-card" data-category="juices">
+
+<span class="category">Juices</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="POPULAR-MAZA-MANGO-FRUIT-DRINK-PET-BOTTLE-500ML-1.jpg" alt="Maaza Mango">
+
+<h3>
+<a href="productjuice.html?product=maaza">
+Maaza Mango 500ml
+</a>
+</h3>
+
+<p>Rs. 120</p>
+
+<a href="productjuice.html?product=maaza" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 3 -->
+
+<div class="product-card" data-category="juices">
+
+<span class="category">Juices</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="MrPlKtYRWLR__hvrwtBtiZqBg4lvP6HamauPNo1OuxD05H_npLv1tEfqVLS6AGB4jmJF2DFoVGpg-T04cqa-WoEh6vURxDrTqSPQFS-dNTw6NwZ98A5j57p6Qj3i9zUeMHUMY2H-uJozf5W0GoigJ9PcKiSRyS7g_0-d8yAqS51CQDcvOfjf_WkPvHI1wV4m.jpg" alt="Mixed Fruit Juice">
+
+<h3>
+<a href="productjuice.html?product=juice2">
+Mixed Fruit Juice
+</a>
+</h3>
+
+<p>Rs. 260</p>
+
+<a href="productjuice.html?product=juice2" class="view-btn">
+View Details
+</a>
+
+</div>
+
+<!-- 4 -->
+
+<div class="product-card" data-category="juices">
+
+<span class="category">Juices</span>
+
+<button class="wishlist-btn">
+<i class="fa-regular fa-heart heart"></i>
+</button>
+
+<img src="UCauEget7jRcNp_nmKCjpg9c2aWPQ7eAtHBLNT_BU_e1eMyJ0oicyhTavrtdSs9ksCPjf2G_nVP87iuWPBJSafGOqvggQX7mCnS_MrTp1BpBDTlahVyxLYLaM5zNAsF8oS2cLjIofUAqgxPb27v7vuj-zsA3HePOgRFRyPr6nyHul33huJsqvqPvS9_Cdgi9.jpg" alt="Orange Juice">
+
+<h3>
+<a href="productjuice.html?product=orangejuice">
+Orange Juice
+</a>
+</h3>
+
+<p>Rs. 230</p>
+
+<a href="productjuice.html?product=orangejuice" class="view-btn">
+View Details
+</a>
+
+</div>
+
+</div>
+</div>
+
+
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2>🛒 Grocery Store</h2>
+            <p>
+                Fresh groceries delivered to your doorstep with quality,
+                trust and affordable prices.
+            </p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="about.html">About</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Categories</h3>
+
+            <a href="oil.html">Cooking Oil</a>
+            <a href="juices.html">Juices</a>
+            <a href="drink.html">Soft Drinks</a>
+            <a href="shampoo.html">Hair Care</a>
+            <a href="surf.html">Laundry</a>
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact Us</h3>
+
+            <a href="https://www.tiktok.com/talhafarhat04@gmail.com">
+                <i class="fas fa-envelope"></i>
+                talhafarhat04@gmile.com
+            </a>
+
+            <a href="tel:+923104533302">
+                <i class="fas fa-phone"></i>
+                +92 310 4533302
+            </a>
+
+            <a href="https://wa.me/923104533302" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+
+
+           <a href="https://www.google.com/maps/search/?api=1&query=PM+Sweets+%26+Bakers+Mujahid+Road+Lahore" target="_blank">
+    <i class="fas fa-location-dot"></i>
+    Near PM Sweets & Bakers,
+    Mujahid Road, Bank Stop, Lahore
+</a>
+
+            <div class="social-icons" style="margin-top:20px;">
+
+                <a href="https://www.tiktok.com/talhafarhat04@gmail.com"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="https://www.tiktok.com/talhafarhat04@gmail.com"><i class="fab fa-instagram"></i></a>
+
+                <a href="https://www.tiktok.com/talhafarhat04@gmail.com"><i class="fab fa-x-twitter"></i></a>
+
+                <a href="https://www.tiktok.com/talhafarhat04@gmail.com"><i class="fab fa-tiktok"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+<script src="allproduct.js"></script>
+
+</body>
+</html>
+</body>

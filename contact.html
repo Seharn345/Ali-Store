@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact |Ali Store</title>
+     <link rel="shortcut icon" href="ChatGPT Image Jul 11, 2026, 02_36_22 PM.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+@media(max-width:768px){
+    .footer-content{
+        flex-direction:column;
+        text-align:center;
+        align-items:center;
+    }
+}
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 30px;
+        padding: 50px 20px 30px;
+    }
+
+    .footer-brand h2 {
+        font-size: 28px;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer-contact p {
+        margin: 12px 0;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+
+    .footer {
+        margin-top: 50px;
+    }
+
+    .footer-brand h2 {
+        font-size: 24px;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+        padding: 18px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .footer-contact p {
+        font-size: 14px;
+    }
+}
+
+/* Extra small phones (360px and below) */
+@media (max-width: 360px) {
+
+    .footer-content {
+        width: 80%;
+    }
+
+    .footer-brand h2 {
+        font-size: 22px;
+    }
+
+    .footer-contact p {
+        font-size: 13px;
+    }
+}
+
+/*==============================
+CONTACT HERO
+==============================*/
+
+.contact-hero{
+
+    height:420px;
+    background:url("ChatGPT Image Jul 11, 2026, 02_36_22 PM.png") center/cover;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+
+}
+
+.contact-overlay{
+
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.65);
+
+}
+
+.contact-content{
+
+    position:relative;
+    z-index:2;
+    color:white;
+    max-width:700px;
+    padding:20px;
+
+}
+
+.contact-content span{
+
+    color:#ff9500;
+    letter-spacing:2px;
+    font-weight:600;
+
+}
+
+.contact-content h1{
+
+    font-size:60px;
+    margin:20px 0;
+
+}
+
+.contact-content h1 span{
+
+    color:#ff9500;
+
+}
+
+.contact-content p{
+
+    color:#ddd;
+    font-size:20px;
+    line-height:1.7;
+
+}
+
+/*==============================
+BUSINESS HOURS
+==============================*/
+
+.business-hours{
+
+    padding:90px 20px;
+    background:#111;
+
+}
+
+.hours-title{
+
+    text-align:center;
+    margin-bottom:50px;
+
+}
+
+.hours-title span{
+
+    color:#ff9500;
+    letter-spacing:2px;
+    font-weight:600;
+
+}
+
+.hours-title h2{
+
+    color:white;
+    font-size:42px;
+    margin:15px 0;
+
+}
+
+.hours-title h2 span{
+
+    color:#ff9500;
+
+}
+
+.hours-title p{
+
+    color:#bdbdbd;
+    max-width:650px;
+    margin:auto;
+
+}
+
+.hours-card{
+
+    max-width:750px;
+    margin:auto;
+    background:#1a1a1a;
+    border-radius:20px;
+    padding:35px;
+    border:1px solid rgba(255,149,0,.15);
+
+}
+
+.hour-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.hour-row:last-of-type{
+
+    border-bottom:none;
+
+}
+
+.hour-row span{
+
+    color:#ddd;
+    font-size:18px;
+
+}
+
+.hour-row strong{
+
+    color:white;
+
+}
+
+.store-status{
+
+    text-align:center;
+    margin-top:35px;
+
+}
+
+.status{
+
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:50px;
+    font-weight:bold;
+
+}
+
+.status.open{
+
+    background:#17361f;
+    color:#5fff8a;
+
+}
+
+.status.closed{
+
+    background:#3b1b1b;
+    color:#ff7676;
+
+}
+
+/*==============================
+MOBILE
+==============================*/
+
+@media(max-width:768px){
+
+.contact-content h1{
+
+font-size:42px;
+
+}
+
+.contact-content p{
+
+font-size:17px;
+
+}
+
+.hour-row{
+
+flex-direction:column;
+gap:10px;
+
+}
+
+.hours-card{
+
+padding:25px;
+
+}
+
+}
+
+
+/*=========================
+CONTACT FORM
+=========================*/
+
+.contact-section{
+
+    padding:90px 20px;
+    background:#181818;
+
+}
+
+.contact-title{
+
+    text-align:center;
+    margin-bottom:50px;
+
+}
+
+.contact-title span{
+
+    color:#ff9500;
+    letter-spacing:2px;
+    font-weight:600;
+
+}
+
+.contact-title h2{
+
+    color:#fff;
+    font-size:42px;
+    margin:15px 0;
+
+}
+
+.contact-title h2 span{
+
+    color:#ff9500;
+
+}
+
+.contact-title p{
+
+    color:#cfcfcf;
+
+}
+
+.contact-wrapper{
+
+    max-width:700px;
+    margin:auto;
+
+}
+
+.contact-form{
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+
+.contact-form input,
+.contact-form textarea{
+
+    background:#222;
+    border:1px solid rgba(255,149,0,.2);
+    color:#fff;
+    padding:18px;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+
+    border-color:#ff9500;
+
+}
+
+.contact-form button{
+
+    background:#ff9500;
+    color:white;
+    border:none;
+    padding:18px;
+    border-radius:40px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+
+}
+
+.contact-form button:hover{
+
+    background:#ff7a00;
+    transform:translateY(-3px);
+
+}
+
+/*=========================
+MAP
+=========================*/
+
+.map-section{
+
+    background:#111;
+    padding:90px 20px;
+
+}
+
+.map-title{
+
+    text-align:center;
+    margin-bottom:40px;
+
+}
+
+.map-title span{
+
+    color:#ff9500;
+
+}
+
+.map-title h2{
+
+    color:white;
+    font-size:42px;
+    margin-top:15px;
+
+}
+
+.map-title h2 span{
+
+    color:#ff9500;
+
+}
+
+.map-section iframe{
+
+    width:100%;
+    height:450px;
+    border:none;
+    border-radius:20px;
+
+}
+
+@media(max-width:768px){
+
+.contact-title h2,
+.map-title h2{
+
+font-size:34px;
+
+}
+
+}
+
+
+.store-status-box{
+
+    text-align:center;
+    margin-top:35px;
+
+}
+
+.today-hours{
+
+    margin-top:15px;
+    color:#cfcfcf;
+    font-size:16px;
+
+}
+
+.status{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 30px;
+    border-radius:50px;
+    font-weight:bold;
+    font-size:18px;
+    transition:.3s;
+
+}
+
+.status.open{
+
+    background:#17361f;
+    color:#69ff9f;
+    border:1px solid rgba(105,255,159,.25);
+
+}
+
+.status.closed{
+
+    background:#3b1b1b;
+    color:#ff8585;
+    border:1px solid rgba(255,133,133,.25);
+
+}
+           
+    </STYLE>
+</head>
+<body>
+<!-- ================= CONTACT HERO ================= -->
+
+<section class="contact-hero">
+
+    <div class="contact-overlay"></div>
+
+    <div class="contact-content">
+
+        <span>GET IN TOUCH</span>
+
+        <h1>Contact  Ali<span>Store</span></h1>
+
+        <p>
+            Have a question or need assistance?
+            Our team is always ready to help you.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= BUSINESS HOURS ================= -->
+
+<section class="business-hours">
+
+    <div class="hours-title">
+
+        <span>BUSINESS HOURS</span>
+
+        <h2>We're Here <span>For You</span></h2>
+
+        <p>
+            Visit our store during business hours or contact us anytime on WhatsApp.
+        </p>
+
+    </div>
+
+    <div class="hours-card">
+
+        <div class="hour-row">
+            <span>Monday - Friday</span>
+            <strong>9:00 AM - 10:00 PM</strong>
+        </div>
+
+        <div class="hour-row">
+            <span>Saturday</span>
+            <strong>9:00 AM - 11:00 PM</strong>
+        </div>
+
+        <div class="hour-row">
+            <span>Sunday</span>
+            <strong>10:00 AM - 9:00 PM</strong>
+        </div>
+
+     <div class="store-status-box">
+
+    <div id="storeStatus" class="status open">
+        🟢 Checking Store Status...
+    </div>
+
+    <p id="todayHours" class="today-hours">
+        Today's Hours: Loading...
+    </p>
+
+</div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT FORM ================= -->
+
+<section class="contact-section">
+
+    <div class="contact-title">
+
+        <span>CONTACT US</span>
+
+        <h2>Send Us a <span>Message</span></h2>
+
+        <p>
+            Have a question? Fill out the form below and we'll connect with you on WhatsApp.
+        </p>
+
+    </div>
+
+    <div class="contact-wrapper">
+
+        <div class="contact-form">
+
+            <input type="text" id="name" placeholder="Your Name">
+
+            <input type="tel" id="phone" placeholder="Phone Number">
+
+            <textarea id="message" rows="6" placeholder="Write your message..."></textarea>
+
+            <button onclick="sendWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                Send via WhatsApp
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= MAP ================= -->
+
+<section class="map-section">
+
+    <div class="map-title">
+
+        <span>OUR LOCATION</span>
+
+        <h2>Visit Our <span>Store</span></h2>
+
+    </div>
+
+    <iframe
+        src="https://www.google.com/maps?q=PM+Sweets+%26+Bakers+Mujahid+Road+Lahore&output=embed"
+        loading="lazy"
+        allowfullscreen>
+    </iframe>
+
+</section>
+
+
+
+
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-box">
+            <h2>🛒 Grocery Store</h2>
+            <p>
+                Fresh groceries delivered to your doorstep with quality,
+                trust and affordable prices.
+            </p>
+        </div>
+
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="about.html">About</a>
+            <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-box">
+            <h3>Categories</h3>
+
+            <a href="oil.html">Cooking Oil</a>
+            <a href="juices.html">Juices</a>
+            <a href="drink.html">Soft Drinks</a>
+            <a href="shampoo.html">Hair Care</a>
+            <a href="surf.html">Laundry</a>
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Contact Us</h3>
+
+            <a href="https://www.tiktok.com/">
+                <i class="fas fa-envelope"></i>
+                
+            </a>
+
+            <a href="tel:+923104533302">
+                <i class="fas fa-phone"></i>
+                +
+            </a>
+
+            <a href="https://wa.me/" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                WhatsApp
+            </a>
+
+
+           <a href="https://www.google.com/maps/search/?api=1&query=PM+Sweets+%26+Bakers+Mujahid+Road+Lahore" target="_blank">
+    <i class="fas fa-location-dot"></i>
+    
+</a>
+
+            <div class="social-icons" style="margin-top:20px;">
+
+                <a href="https://www.tiktok.com/"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="https://www.tiktok.com/"><i class="fab fa-instagram"></i></a>
+
+                <a href="https://www.tiktok.com/"><i class="fab fa-x-twitter"></i></a>
+
+                <a href="https://www.tiktok.com/"><i class="fab fa-tiktok"></i></a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+
+        © 2026 Ali<span style="color: orange;">Store</span>
+
+    </div>
+
+</footer>
+
+<script>
+
+    /*=========================
+STORE STATUS
+=========================*/
+
+function updateStoreStatus(){
+
+    const now = new Date();
+
+    const day = now.getDay();
+
+    const hour = now.getHours();
+
+    const status = document.getElementById("storeStatus");
+
+    const todayHours = document.getElementById("todayHours");
+
+    let open = false;
+
+    let hoursText = "";
+
+    if(day >= 1 && day <= 5){
+
+        hoursText = "Today's Hours: 9:00 AM – 10:00 PM";
+
+        open = (hour >= 9 && hour < 22);
+
+    }
+
+    else if(day == 6){
+
+        hoursText = "Today's Hours: 9:00 AM – 11:00 PM";
+
+        open = (hour >= 9 && hour < 23);
+
+    }
+
+    else{
+
+        hoursText = "Today's Hours: 10:00 AM – 9:00 PM";
+
+        open = (hour >= 10 && hour < 21);
+
+    }
+
+    todayHours.innerHTML = hoursText;
+
+    if(open){
+
+        status.className = "status open";
+
+        status.innerHTML = "🟢 Store is Open";
+
+    }
+
+    else{
+
+        status.className = "status closed";
+
+        status.innerHTML = "🔴 Store is Closed";
+
+    }
+
+}
+
+updateStoreStatus();
+
+
+/*=========================
+WHATSAPP
+=========================*/
+
+function sendWhatsApp(){
+
+    let name=document.getElementById("name").value.trim();
+
+    let phone=document.getElementById("phone").value.trim();
+
+    let message=document.getElementById("message").value.trim();
+
+    if(name==="" || phone==="" || message===""){
+
+        alert("Please fill in all fields.");
+
+        return;
+
+    }
+
+    let text=
+`Hello RCC Rajpot Cash & Carry,
+
+Name: ${name}
+
+Phone: ${phone}
+
+Message:
+${message}`;
+
+    let url=
+`https://wa.me/923104533302?text=${encodeURIComponent(text)}`;
+
+    window.open(url,"_blank");
+
+}
+</script>
+</body>
+</html>
